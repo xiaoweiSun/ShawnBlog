@@ -1,7 +1,8 @@
 {
   "name": "shawn-blog",
   "description": "My Personal Blog",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "author":"sunxiaowei",
   "private": true,
   "dependencies": {
     "express": "4.x"
