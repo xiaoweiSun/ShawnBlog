@@ -58,5 +58,5 @@ typings/
 .env
 
 # bundle.js
-public/bundle.js
+public/bundle.*
 

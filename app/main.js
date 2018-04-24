@@ -1,8 +1,9 @@
-import Vue  from 'vue'  
-import Hello from './components/Hello.vue'
+import Vue from 'vue'
+import router from './router'  //直接导入路由配置
+import App from './App.vue'
 
 new Vue({
-  el: '#app',
-  template: '<div><hello></hello></div>', 
-  components: Hello
+	el: '#app',
+	router: router,
+	render: h => h(App)
 })
