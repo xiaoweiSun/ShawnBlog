@@ -18,7 +18,7 @@
     text-decoration: unset;
   }
 	#app {
-		width:512px;
+		width:80%;
 		margin:0 auto;
 	}
 </style>
