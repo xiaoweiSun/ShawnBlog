@@ -1,9 +1,9 @@
 <template>
 	<div class="navigation">
-		<a class="navigation_item">{{message_index}}</a>
-		<a class="navigation_item">{{message_list}}</a>
-		<a class="navigation_item">{{message_git}}</a>
-		<a class="navigation_item">{{message_admin}}</a>
+		<span class="navigation_item"><a>{{message_index}}</a></span>
+		<span class="navigation_item"><a>{{message_list}}</a></span>
+		<span class="navigation_item"><a href="https://github.com/xiaoweiSun/ShawnBlog" target="_blank">{{message_git}}</a></span>
+		<span class="navigation_item"><a>{{message_admin}}</a></span>
 	</div>
 </template>
 

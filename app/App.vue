@@ -15,6 +15,7 @@
 	a {
     color: #545455;
     cursor: pointer;
+    text-decoration: unset;
   }
 	#app {
 		width:512px;
