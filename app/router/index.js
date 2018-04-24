@@ -10,7 +10,11 @@ const router = new Router({
   history: true,    // 开启html5history模式
   linkActiveClass: 'active', // v-link激活时添加的class，默认是`v-link-active`
   routes: [
-  	{path: '/', components: {default:Hello, navigation: NavigationBar}}
+  	{
+  		path: '/', 
+  		components: {default:Hello, navigation: NavigationBar},
+  		props: {default:false,navigation:true}
+  	}
 	]
 })
 
