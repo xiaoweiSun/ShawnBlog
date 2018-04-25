@@ -1,7 +1,16 @@
 <template>
-	<div id="editor">
-	  <textarea :value="input" @input="update"></textarea>
-	  <div v-html="compiledMarkdown"></div>
+	<div>
+		<div id="title">
+			<label>标题</label>
+			<input v-model="title" type="text">
+		</div>
+		<div id="editor">
+		  <textarea v-model="input" @input="update"></textarea>
+		  <div v-html="compiledMarkdown"></div>
+		</div>
+		<div id="save">
+			<button class="save-btn" v-on:click="submit">保存</button>
+		</div>
 	</div>
 </template>
 
@@ -11,7 +20,8 @@
 	export default {
 		data() {
 			return {
-	    	input: '# hello'
+	    	input: '# hello',
+	    	title: ''
 	    }
 	  },
 	  computed: {
@@ -22,7 +32,19 @@
 	  methods: {
 	    update: _.debounce(function (e) {
 	      this.input = e.target.value
-	    }, 300)
+	    }, 300),
+	    submit: function(event) {
+	    	if(this.$route.params.id) {
+
+	    	} else {
+	    		let object = {
+	    			title: this.title,
+	    			date: Date.now(),
+	    			content: this.input
+	    		}
+	    		console.log(object);
+	    	}
+	    }
 	  }
 	}
 </script>
@@ -50,5 +72,10 @@ textarea {
 
 code {
   color: #f66;
+}
+
+.save-btn {
+	width: 80px;
+	margin-left: auto;
 }
 </style>
