@@ -7,10 +7,11 @@ import ArticleEdit from '../components/ArticleEdit.vue'
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'history',
   routes: [
   	{
   		path: '/',
-  		components: {default:ArticleEdit, navigation: NavigationBar},
+  		components: {default:Hello, navigation: NavigationBar},
   		props: {default:false,navigation:true}
   	},
     {

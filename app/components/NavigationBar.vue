@@ -1,6 +1,6 @@
 <template>
 	<div class="navigation">
-		<span class="navigation_item"><a v-bind:class="{active:!isList}">{{message_index}}</a></span>
+		<span class="navigation_item"><a href="/" v-bind:class="{active:!isList}">{{message_index}}</a></span>
 		<span class="navigation_item"><a v-bind:class="{active:isList}">{{message_list}}</a></span>
 		<span class="navigation_item"><a href="https://github.com/xiaoweiSun/ShawnBlog" target="_blank">{{message_git}}</a></span>
 		<span class="navigation_item"><a href="articleEdit">{{message_admin}}</a></span>
@@ -23,6 +23,7 @@
 	display:flex;
 	width:512px;
 	margin:0 auto;
+	height:10%;
 }
 .navigation_item {
 	margin: 0 8px;
