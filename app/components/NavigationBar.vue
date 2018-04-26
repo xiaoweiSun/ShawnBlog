@@ -1,9 +1,9 @@
 <template>
 	<div class="navigation">
-		<span class="navigation_item"><a href="/" v-bind:class="{active:!isList}">{{message_index}}</a></span>
-		<span class="navigation_item"><a v-bind:class="{active:isList}">{{message_list}}</a></span>
+		<span class="navigation_item"><router-link to="/" :class="{active:!$route.params.isList}">{{message_index}}</router-link></span>
+		<span class="navigation_item"><router-link :to="'/articleList/true'" :class="{active:$route.params.isList}">{{message_list}}</router-link></span>
 		<span class="navigation_item"><a href="https://github.com/xiaoweiSun/ShawnBlog" target="_blank">{{message_git}}</a></span>
-		<span class="navigation_item"><a href="articleEdit">{{message_admin}}</a></span>
+		<span class="navigation_item"><router-link to="/articleEdit">{{message_admin}}</router-link></span>
 	</div>
 </template>
 
@@ -13,7 +13,7 @@
     	message_index: '首页',
     	message_list: '文章列表',
     	message_git: 'GIT',
-    	message_admin: '管理员入口'
+    	message_admin: '管理员入口',
     })
 	}
 </script>

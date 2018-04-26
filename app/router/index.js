@@ -14,18 +14,15 @@ const router = new Router({
   routes: [
   	{
   		path: '/',
-  		components: {default:Hello, navigation: NavigationBar},
-  		props: {default:false,navigation:true}
+  		components: {default:Hello, navigation: NavigationBar}
   	},
     {
       path: '/articleEdit',
-      components: {default:ArticleEdit, navigation: NavigationBar},
-      props: {default:false,navigation:true}
+      components: {default:ArticleEdit, navigation: NavigationBar}
     },
     {
-      path: '/articleList',
-      components: {default:ArticleList, navigation: NavigationBar},
-      props: {default:false,navigation:true}
+      path: '/articleList/:isList',
+      components: {default:ArticleList, navigation: NavigationBar}
     }
 	]
 })

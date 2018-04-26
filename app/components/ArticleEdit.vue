@@ -46,7 +46,7 @@
 	    		this.$http.post('/api/saveArticle', {
             articleInformation: articleInformation
           }).then(
-            response => this.$router.push('/articleList')
+            response => this.$router.push('/articleList/true')
           )
 	    	}
 	    }
