@@ -33,16 +33,21 @@
 	    update: _.debounce(function (e) {
 	      this.input = e.target.value
 	    }, 300),
-	    submit: function(event) {
+	    submit: function() {
+	    	let self = this;
 	    	if(this.$route.params.id) {
 
 	    	} else {
-	    		let object = {
+	    		let articleInformation = {
 	    			title: this.title,
 	    			date: Date.now(),
 	    			content: this.input
 	    		}
-	    		console.log(object);
+	    		this.$http.post('/api/saveArticle', {
+            articleInformation: articleInformation
+          }).then(
+            response => this.$router.push('/articleList')
+          )
 	    	}
 	    }
 	  }
