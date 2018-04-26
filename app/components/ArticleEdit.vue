@@ -33,16 +33,29 @@
 	    update: _.debounce(function (e) {
 	      this.input = e.target.value
 	    }, 300),
-	    submit: function(event) {
+	    submit: function() {
+	    	let self = this;
 	    	if(this.$route.params.id) {
 
 	    	} else {
-	    		let object = {
+	    		let articleInformation = {
 	    			title: this.title,
 	    			date: Date.now(),
 	    			content: this.input
 	    		}
-	    		console.log(object);
+	    		this.$http.post('/api/saveArticle', {
+            articleInformation: articleInformation
+          }).then(
+            response => {
+              self.$message({
+                message: '发表文章成功',
+                type: 'success'
+              })
+              // 保存成功后跳转至文章列表页
+              // self.refreshArticleList()
+            },
+            response => console.log(response)
+          )
 	    	}
 	    }
 	  }
