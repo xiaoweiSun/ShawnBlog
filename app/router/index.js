@@ -22,6 +22,10 @@ const router = new Router({
       components: {default:ArticleEdit, navigation: NavigationBar}
     },
     {
+      path: '/articleEdit/:id',
+      components: {default:ArticleEdit, navigation: NavigationBar}
+    },
+    {
       path: '/articleList/:isList',
       components: {default:ArticleList, navigation: NavigationBar}
     },

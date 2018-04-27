@@ -29,6 +29,18 @@
 	      return marked(this.input, { sanitize: true })
 	    }
 	  },
+	  mounted: function() {
+	  	if(this.$route.params.id) {
+	  		this.$http.get('/api/articleDetail/' + this.$route.params.id).then(
+          response => {
+            let article = response.body
+            this.title = article.title
+            this.input = article.content
+          },
+	    		response => console.log(response)
+        )
+	  	}
+	  },
 	  methods: {
 	    update: _.debounce(function (e) {
 	      this.input = e.target.value
@@ -36,7 +48,18 @@
 	    submit: function() {
 	    	let self = this;
 	    	if(this.$route.params.id) {
-
+					let articleInformation = {
+						_id: this.$route.params.id,
+	    			title: this.title,
+	    			date: Date.now(),
+	    			content: this.input
+	    		}
+	    		this.$http.post('/api/updateArticle', {
+						articleInformation: articleInformation
+	    		}).then(
+	    			response => this.$router.push('/articleDetail/' + self.$route.params.id),
+	    			response => console.log(response)
+	    		)
 	    	} else {
 	    		let articleInformation = {
 	    			title: this.title,
@@ -46,7 +69,8 @@
 	    		this.$http.post('/api/saveArticle', {
             articleInformation: articleInformation
           }).then(
-            response => this.$router.push('/articleList/true')
+            response => this.$router.push('/articleList/true'),
+	    			response => console.log(response)
           )
 	    	}
 	    }
