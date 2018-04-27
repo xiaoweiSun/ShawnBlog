@@ -2,7 +2,7 @@
 	<div>
 		<ul>
 			<li v-for="article in articleList">
-				{{article.title}}
+				<router-link :to="'/articleDetail/'+article._id">{{article.title}}</router-link>
 			</li>
 		</ul>
 	</div>
@@ -10,7 +10,7 @@
 
 <script>
 	export default {
-    name: 'article',
+    name: 'articleList',
     data() {
       return {
         articleList: [],
@@ -20,7 +20,7 @@
       // 获取文章列表
       this.$http.get('/api/articleList').then(
         response => this.articleList = response.body.reverse(),
-        response => console.log(response)
+        response => console.log(response.body)
       )
     }
 	}

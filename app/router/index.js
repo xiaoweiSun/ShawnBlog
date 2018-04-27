@@ -5,6 +5,7 @@ import Hello from '../components/Hello.vue'
 import NavigationBar from '../components/NavigationBar.vue'
 import ArticleEdit from '../components/ArticleEdit.vue'
 import ArticleList from '../components/ArticleList.vue'
+import ArticleDetail from '../components/ArticleDetail.vue'
 
 Vue.use(Router)
 Vue.use(Resource)
@@ -23,6 +24,10 @@ const router = new Router({
     {
       path: '/articleList/:isList',
       components: {default:ArticleList, navigation: NavigationBar}
+    },
+    {
+    	path: '/articleDetail/:id',
+    	component: ArticleDetail
     }
 	]
 })

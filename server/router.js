@@ -11,7 +11,7 @@ router.get('/api/articleList', function(req, res) {
     }
     res.json(docs);
   })
-});
+})
 
 router.post('/api/saveArticle', function(req, res) {
   console.log(req);
@@ -23,6 +23,17 @@ router.post('/api/saveArticle', function(req, res) {
     }
     res.send();
   })
-});
+})
+
+// 文章详情页
+router.get('/api/articleDetail/:id', function (req, res) {
+  db.Article.findOne({ _id: req.params.id }, function (err, docs) {
+    if (err) {
+      console.error(err)
+      return
+    }
+    res.send(docs)
+  })
+})
 
 module.exports = router;
