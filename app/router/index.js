@@ -7,6 +7,8 @@ import ArticleEdit from '../components/ArticleEdit.vue'
 import ArticleList from '../components/ArticleList.vue'
 import ArticleDetail from '../components/ArticleDetail.vue'
 
+import AddCategory from '../components/admin/AddCategory.vue'
+
 Vue.use(Router)
 Vue.use(Resource)
 
@@ -32,6 +34,10 @@ const router = new Router({
     {
     	path: '/articleDetail/:id',
     	component: ArticleDetail
+    },
+    {
+      path: '/addCategory',
+      component: AddCategory
     }
 	]
 })

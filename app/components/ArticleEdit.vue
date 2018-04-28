@@ -4,6 +4,12 @@
 			<label>标题</label>
 			<input v-model="title" type="text">
 		</div>
+		<div id="category">
+			<label>分类</label>
+			<select v-model="category">
+				<option v-for="item in categoryList" :value="item._id">{{item.name}}</option>
+			</select>
+		</div>
 		<div id="editor">
 		  <textarea v-model="input" @input="update"></textarea>
 		  <div v-html="compiledMarkdown"></div>
@@ -21,7 +27,9 @@
 		data() {
 			return {
 	    	input: '# hello',
-	    	title: ''
+	    	title: '',
+	    	category: '',
+	    	categoryList: []
 	    }
 	  },
 	  computed: {
@@ -35,11 +43,16 @@
           response => {
             let article = response.body
             this.title = article.title
+            this.category = article.category._id
             this.input = article.content
           },
 	    		response => console.log(response)
         )
 	  	}
+      this.$http.get('/api/categoryList').then(
+        response => this.categoryList = response.body,
+        response => console.log(response.body)
+      )
 	  },
 	  methods: {
 	    update: _.debounce(function (e) {
@@ -52,6 +65,7 @@
 						_id: this.$route.params.id,
 	    			title: this.title,
 	    			date: Date.now(),
+	    			category: this.category,
 	    			content: this.input
 	    		}
 	    		this.$http.post('/api/updateArticle', {
@@ -64,6 +78,7 @@
 	    		let articleInformation = {
 	    			title: this.title,
 	    			date: Date.now(),
+	    			category: this.category,
 	    			content: this.input
 	    		}
 	    		this.$http.post('/api/saveArticle', {
