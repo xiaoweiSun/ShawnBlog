@@ -14,11 +14,14 @@ router.get('/api/articleList', function(req, res) {
 })
 
 router.get('/api/articleDetail/:id', function (req, res) {
-  db.Article.findOne({ _id: req.params.id }, function (err, docs) {
+  db.Article.findOne({ _id: req.params.id })
+  .populate('categroy','name -_id')
+  .exec(function (err, docs) {
     if (err) {
       console.error(err)
       return
     }
+    console.log(docs.category.name)
     res.send(docs)
   })
 })
@@ -42,6 +45,7 @@ router.post('/api/updateArticle', function(req, res) {
     }
     docs.title = info.title
     docs.date = info.date
+    docs.category = info.category
     docs.content = info.content
     db.Article(docs).save(function (err) {
       if (err) {
@@ -62,6 +66,27 @@ router.get('/api/deleteArticle/:id', function (req, res) {
       return
     }
     res.send()
+  })
+})
+
+// 添加分类
+router.post('/api/category/save', function(req, res) {
+  new db.Category(req.body.categoryInformation).save(function (err) {
+    res.status(500).send()
+    console.log(err)
+    return
+  })
+  res.send()
+})
+
+// 分类列表
+router.get('/api/categoryList', function(req, res) {
+  db.Category.find({}, function (err, docs) {
+    if (err) {
+      console.error(err)
+      return
+    }
+    res.json(docs)
   })
 })
 

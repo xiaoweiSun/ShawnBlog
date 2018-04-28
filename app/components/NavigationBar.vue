@@ -4,7 +4,7 @@
 		<span class="navigation_item"><router-link :to="'/articleList/true'" :class="{active:$route.params.isList}">{{message_list}}</router-link></span>
 		<span class="navigation_item"><a href="https://github.com/xiaoweiSun/ShawnBlog" target="_blank">{{message_git}}</a></span>
 		<span class="navigation_item"><router-link to="/articleEdit">{{message_admin}}</router-link></span>
-
+        <span class="navigation_item"><router-link to="/addCategory">分类管理</router-link></span>
 	</div>
 </template>
 
@@ -14,18 +14,9 @@
     	message_index: '首页',
     	message_list: '文章列表',
     	message_git: 'GIT',
-    	message_admin: '管理员入口',
-    }),
-    beforeRouteUpdate (to, from, next) {
-    	console.log('aaaaaaaaaaa')
-    	next()
-    },
-    watch: {
-    	'this.$route.params'() {
-    		console.log('param changed.')
-    	}
-    }
-	}
+    	message_admin: '管理员入口'
+    })
+  }
 </script>
 
 <style>

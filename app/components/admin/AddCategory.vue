@@ -1,0 +1,30 @@
+<template>
+	<div>
+		名称：
+		<input v-model="name" placeholder="分类名称">
+		<button @click="addCategory()">确定</button>
+	</div>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				name: ''
+			}
+		},
+		methods: {
+			addCategory: function() {
+				let categoryInformation = {
+					name: this.name
+				}
+				this.$http.post('/api/category/save', {
+          categoryInformation: categoryInformation
+        }).then(
+          response => this.$router.push('/'),
+    			response => console.log(response)
+        )
+			}
+		}
+	}
+</script>
