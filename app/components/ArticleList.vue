@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="article_list">
 		<ul>
 			<li v-for="article in articleList">
 				<router-link :to="'/articleDetail/'+article._id">{{article.title}}</router-link>
@@ -48,5 +48,8 @@
 <style>
   .delete_btn {
     cursor: pointer;
+  }
+  .article_list {
+    margin-top: 180px;
   }
 </style>

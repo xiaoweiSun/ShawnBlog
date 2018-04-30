@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="article_edit">
 		<div id="title">
 			<label>标题</label>
 			<input v-model="title" type="text">
@@ -84,7 +84,7 @@
 	    		this.$http.post('/api/saveArticle', {
             articleInformation: articleInformation
           }).then(
-            response => this.$router.push('/articleList/true'),
+            response => this.$router.push('/articleList'),
 	    			response => console.log(response)
           )
 	    	}
@@ -94,32 +94,35 @@
 </script>
 
 <style>
-textarea, #editor div {
-  display: inline-block;
-  width: 49%;
-  height: 80%;
-  vertical-align: top;
-  box-sizing: border-box;
-  padding: 0 20px;
-}
+	.article_edit {
+		margin-top: 180px;
+	}
+	textarea, #editor div {
+	  display: inline-block;
+	  width: 49%;
+	  height: 80%;
+	  vertical-align: top;
+	  box-sizing: border-box;
+	  padding: 0 20px;
+	}
 
-textarea {
-  border: none;
-  border-right: 1px solid #ccc;
-  resize: none;
-  outline: none;
-  background-color: #f6f6f6;
-  font-size: 14px;
-  font-family: 'Monaco', courier, monospace;
-  padding: 20px;
-}
+	textarea {
+	  border: none;
+	  border-right: 1px solid #ccc;
+	  resize: none;
+	  outline: none;
+	  background-color: #f6f6f6;
+	  font-size: 14px;
+	  font-family: 'Monaco', courier, monospace;
+	  padding: 20px;
+	}
 
-code {
-  color: #f66;
-}
+	code {
+	  color: #f66;
+	}
 
-.save-btn {
-	width: 80px;
-	margin-left: auto;
-}
+	.save-btn {
+		width: 80px;
+		margin-left: auto;
+	}
 </style>

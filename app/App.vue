@@ -12,13 +12,14 @@
 </script>
 
 <style>
+  body {
+    box-sizing: border-box;
+    margin: 0;
+  }
 	a {
     color: #545455;
     cursor: pointer;
     text-decoration: unset;
   }
-	#app {
-		width:80%;
-		margin:0 auto;
-	}
+
 </style>

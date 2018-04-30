@@ -17,7 +17,7 @@ router.get('/api/articleList', function(req, res) {
 
 router.get('/api/articleDetail/:id', function (req, res) {
   db.Article.findOne({ _id: req.params.id })
-  .populate('category')
+  .populate('category', 'name')
   .exec(function (err, docs) {
     if (err) {
       console.error(err)

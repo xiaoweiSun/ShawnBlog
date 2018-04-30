@@ -28,12 +28,12 @@ const router = new Router({
       components: {default:ArticleEdit, navigation: NavigationBar}
     },
     {
-      path: '/articleList/:isList',
+      path: '/articleList',
       components: {default:ArticleList, navigation: NavigationBar}
     },
     {
     	path: '/articleDetail/:id',
-    	component: ArticleDetail
+    	components: {default:ArticleDetail, navigation: NavigationBar}
     },
     {
       path: '/addCategory',
