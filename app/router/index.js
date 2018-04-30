@@ -10,6 +10,7 @@ import CategoryList from '../components/CategoryList.vue'
 import Categories from '../components/Categories.vue'
 
 import AddCategory from '../components/admin/AddCategory.vue'
+import Login from '../components/admin/Login.vue'
 
 Vue.use(Router)
 Vue.use(Resource)
@@ -48,6 +49,10 @@ const router = new Router({
     {
       path: '/addCategory',
       component: AddCategory
+    },
+    {
+      path: '/login',
+      component: Login
     }
 	]
 })

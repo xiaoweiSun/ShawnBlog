@@ -60,3 +60,6 @@ typings/
 # bundle.js
 public/bundle.*
 
+#mac
+.DS_Store
+

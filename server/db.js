@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 mongoose.connect('mongodb://localhost:27017/blog')
 
 const userSchema = new mongoose.Schema({
-  name: String,
+  username: String,
   password: String
 })
 

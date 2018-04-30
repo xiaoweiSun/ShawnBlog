@@ -23,6 +23,10 @@
         response => this.articleList = response.body.reverse(),
         response => console.log(response.body)
       )
+      this.$http.get('/api/categoryDetail/' + id).then(
+      	response => this.title = response.body.name,
+      	response => console.log(response.body)
+      )
     }
 	}
 </script>

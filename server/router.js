@@ -3,6 +3,16 @@ const db = require('./db.js')
 
 const router = express.Router()
 
+router.get('/api/getUser/:username', function (req, res) {
+  db.User.findOne({ username: req.params.username }, function (err, docs) {
+    if (err) {
+      console.error(err)
+      return
+    }
+    res.send(docs)
+  })
+})
+
 router.get('/api/articleList', function(req, res) {
   db.Article.find({})
   .populate('category', 'name')
@@ -160,6 +170,16 @@ router.get('/api/categoryList', function(req, res) {
   db.Category.find({}, function (err, docs) {
     if (err) {
       console.error(err)
+      return
+    }
+    res.json(docs)
+  })
+})
+
+router.get('/api/categoryDetail/:id', function(req, res) {
+  db.Category.findOne({_id:req.params.id}, function(err, docs) {
+    if (err) {
+      console.error('api:api/categoryDetail/' + req.params.id + ',err:' + req.err)
       return
     }
     res.json(docs)

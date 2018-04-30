@@ -1,21 +1,21 @@
 <template>
 	<div class="article_edit">
-		<div id="title">
-			<label>标题</label>
-			<input v-model="title" type="text">
-		</div>
-		<div id="category">
-			<label>分类</label>
-			<select v-model="category">
+		<div id="title" class="article_title_label">标题</div>
+		<input v-model="title" type="text" class="article_title_input">
+
+		<div id="category" class="article_category">分类
+			<select v-model="category" class="article_category_select">
 				<option v-for="item in categoryList" :value="item._id">{{item.name}}</option>
 			</select>
 		</div>
+
+		<div class="article_content_label">内容（Markdown）</div>
 		<div id="editor">
 		  <textarea v-model="input" @input="update"></textarea>
-		  <div v-html="compiledMarkdown"></div>
+		  <div class="article_edit_view" v-html="compiledMarkdown"></div>
 		</div>
 		<div id="save">
-			<button class="save-btn" v-on:click="submit">保存</button>
+			<button class="save_btn" @click="submit">保存</button>
 		</div>
 	</div>
 </template>
@@ -108,8 +108,32 @@
 
 <style>
 	.article_edit {
-		margin-top: 180px;
+		margin: 180px 50px;
 	}
+
+	.article_title_label {
+		margin: 10px 0;
+	}
+
+	.article_title_input {
+		width: 100%;
+		line-height: 2;
+	}
+
+	.article_category {
+		margin: 10px;
+		margin-left: 0;
+		line-height: 2;
+	}
+
+	.article_content_label {
+		margin: 10px 0;
+	}
+
+	.article_edit_view {
+		box-shadow: 0 0 5px #ccc;
+	}
+
 	textarea, #editor div {
 	  display: inline-block;
 	  width: 49%;
@@ -117,6 +141,7 @@
 	  vertical-align: top;
 	  box-sizing: border-box;
 	  padding: 0 20px;
+	  overflow: scroll;
 	}
 
 	textarea {
@@ -134,8 +159,10 @@
 	  color: #f66;
 	}
 
-	.save-btn {
+	.save_btn {
 		width: 80px;
-		margin-left: auto;
+		margin-top: 10px;
+		margin-right: 20px;
+		float: right;
 	}
 </style>
