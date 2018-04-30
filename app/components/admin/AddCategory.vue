@@ -16,7 +16,8 @@
 		methods: {
 			addCategory: function() {
 				let categoryInformation = {
-					name: this.name
+					name: this.name,
+					count: 0
 				}
 				this.$http.post('/api/category/save', {
           categoryInformation: categoryInformation

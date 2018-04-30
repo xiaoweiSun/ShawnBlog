@@ -6,7 +6,7 @@
 				<span class="article_detail_meta_date">发表于{{article.date}}</span>
 				<span class="article_detail_meta_category">
 					分类于
-					<a class="article_detail_meta_category_link">{{article.category.name}}</a>
+					<router-link :to="'/categories/' + article.category._id" class="article_detail_meta_category_link">{{article.category.name}}</router-link>
 				</span>
 				<router-link :to="'/articleEdit/' + article._id" class="article_detail_meta_edit">编辑</router-link>
 				<span @click="deleteArticle(article._id)" class="article_detail_meta_edit">删除</span>

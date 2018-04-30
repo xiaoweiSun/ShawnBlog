@@ -4,8 +4,20 @@ const db = require('./db.js')
 const router = express.Router()
 
 router.get('/api/articleList', function(req, res) {
-	db.Article.find({})
+  db.Article.find({})
   .populate('category', 'name')
+  .exec(function (err, docs) {
+    if (err) {
+      console.error(err)
+      return
+    }
+    res.json(docs)
+  })
+})
+
+router.get('/api/articleList/:categoryId', function(req, res) {
+  
+  db.Article.find({category: req.params.categoryId})
   .exec(function (err, docs) {
     if (err) {
       console.error(err)
@@ -36,12 +48,26 @@ router.post('/api/saveArticle', function(req, res) {
     }
     res.send()
   })
+  db.Category.findOne({_id: req.body.articleInformation.category}, function (err, docs) {
+    if (err) {
+      console.error(err)
+      return
+    }
+    docs.count += 1
+    db.Category(docs).save(function (err) {
+      if (err) {
+        console.error(err)
+        return
+      }
+    })
+  })
 })
 
 router.post('/api/updateArticle', function(req, res) {
   let info = req.body.articleInformation
   db.Article.findOne({_id: info._id}, function (err, docs) {
     if (err) {
+      console.error(err)
       return
     }
     docs.title = info.title
@@ -51,11 +77,40 @@ router.post('/api/updateArticle', function(req, res) {
     db.Article(docs).save(function (err) {
       if (err) {
         res.status(500).send()
+        console.error(err)
         return
       }
       res.send()
     })
   })
+  if (info.category != info.category_old) {
+    db.Category.findOne({_id: info.category}, function (err, docs) {
+      if (err) {
+        console.error(err)
+        return
+      }
+      docs.count = 1
+      db.Category(docs).save(function (err) {
+        if (err) {
+          console.error(err)
+          return
+        }
+      })
+    })
+    db.Category.findOne({_id: info.category_old}, function (err, docs) {
+      if (err) {
+        console.error(err)
+        return
+      }
+      docs.count = docs.count - 1
+      db.Category(docs).save(function (err) {
+        if (err) {
+          console.error(err)
+          return
+        }
+      })
+    })
+  }
 })
 
 // 文章删除
@@ -67,6 +122,26 @@ router.get('/api/deleteArticle/:id', function (req, res) {
       return
     }
     res.send()
+  })
+  db.Article.findOne({ _id: req.params.id })
+  .exec(function (err, article) {
+    if (err) {
+      console.error(err)
+      return
+    }
+    db.Category.findOne({_id: article.category}, function (err, docs) {
+      if (err) {
+        console.error(err)
+        return
+      }
+      docs.count = docs.count - 1
+      db.Category(docs).save(function (err) {
+        if (err) {
+          console.error(err)
+          return
+        }
+      })
+    })
   })
 })
 

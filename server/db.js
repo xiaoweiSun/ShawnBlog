@@ -16,7 +16,8 @@ const articleSchema = new mongoose.Schema({
 })
 
 const categorySchema = new mongoose.Schema({
-	name: String
+	name: String,
+  count: Number
 })
 
 const Models = {

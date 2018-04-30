@@ -29,6 +29,7 @@
 	    	input: '# hello',
 	    	title: '',
 	    	category: '',
+	    	category_old: '',
 	    	categoryList: []
 	    }
 	  },
@@ -44,6 +45,7 @@
             let article = response.body
             this.title = article.title
             this.category = article.category._id
+            this.category_old = this.category
             this.input = article.content
           },
 	    		response => console.log(response)
@@ -58,14 +60,25 @@
 	    update: _.debounce(function (e) {
 	      this.input = e.target.value
 	    }, 300),
+	    getDate: function () {
+        let mydate, y, m, d;
+        mydate = new Date()
+        y = mydate.getFullYear()
+        m = mydate.getMonth() + 1
+        d = mydate.getDate()
+        if (m < 10) m = '0' + m
+        if (d < 10) d = '0' + d
+        return y + '-' + m + '-' + d
+      },
 	    submit: function() {
 	    	let self = this;
 	    	if(this.$route.params.id) {
 					let articleInformation = {
 						_id: this.$route.params.id,
 	    			title: this.title,
-	    			date: Date.now(),
+	    			date: this.getDate(),
 	    			category: this.category,
+	    			category_old: this.category_old,
 	    			content: this.input
 	    		}
 	    		this.$http.post('/api/updateArticle', {
@@ -77,7 +90,7 @@
 	    	} else {
 	    		let articleInformation = {
 	    			title: this.title,
-	    			date: Date.now(),
+	    			date: this.getDate(),
 	    			category: this.category,
 	    			content: this.input
 	    		}

@@ -6,6 +6,8 @@ import NavigationBar from '../components/NavigationBar.vue'
 import ArticleEdit from '../components/ArticleEdit.vue'
 import ArticleList from '../components/ArticleList.vue'
 import ArticleDetail from '../components/ArticleDetail.vue'
+import CategoryList from '../components/CategoryList.vue'
+import Categories from '../components/Categories.vue'
 
 import AddCategory from '../components/admin/AddCategory.vue'
 
@@ -34,6 +36,14 @@ const router = new Router({
     {
     	path: '/articleDetail/:id',
     	components: {default:ArticleDetail, navigation: NavigationBar}
+    },
+    {
+      path: '/categoryList',
+      components: {default:CategoryList, navigation: NavigationBar}
+    },
+    {
+      path: '/categories/:id',
+      components: {default:Categories, navigation: NavigationBar}
     },
     {
       path: '/addCategory',

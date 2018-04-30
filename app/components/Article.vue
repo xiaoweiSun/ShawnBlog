@@ -6,7 +6,7 @@
 				<span class="article_meta_date">发表于{{article.date}}</span>
 				<span class="article_meta_category">
 					分类于
-					<a class="article_meta_category_link">{{article.category.name}}</a>
+					<router-link :to="'/categories/' + article.category._id" class="article_meta_category_link">{{article.category.name}}</router-link>
 				</span>
 			</div>
 			<div v-html="compiledMarkdown(article.content)"></div>

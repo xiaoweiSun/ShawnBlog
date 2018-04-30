@@ -4,6 +4,7 @@
 			<div class="navigation-inner-meta"></div>
 			<ul class="navigation-inner-link">
 				<li class="navigation_item"><router-link to="/">首页</router-link></li>
+				<li class="navigation_item"><router-link to="/categoryList">分类</router-link></li>
 				<li class="navigation_item"><router-link to="/articleList">文章列表</router-link></li>
 				<li class="navigation_item"><a href="https://github.com/xiaoweiSun/ShawnBlog" target="_blank">GIT</a></li>
 				<li class="navigation_item"><router-link to="/articleEdit">管理员入口</router-link></li>
@@ -48,6 +49,7 @@
 .navigation_item {
 	padding: 0 10px;
 	line-height: 30px;
+	border-radius: 2px;
 }
 .navigation_item:hover {
 	background: #e1e1e1;
