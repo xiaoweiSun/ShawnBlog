@@ -1,19 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Resource from 'vue-resource'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import Article from '../components/Article.vue'
 import NavigationBar from '../components/NavigationBar.vue'
-import ArticleEdit from '../components/ArticleEdit.vue'
-import ArticleList from '../components/ArticleList.vue'
+import Archives from '../components/Archives.vue'
 import ArticleDetail from '../components/ArticleDetail.vue'
 import CategoryList from '../components/CategoryList.vue'
 import Categories from '../components/Categories.vue'
 
 import AddCategory from '../components/admin/AddCategory.vue'
+import ArticleEdit from '../components/admin/ArticleEdit.vue'
+import ArticleList from '../components/admin/ArticleList.vue'
 import Login from '../components/admin/Login.vue'
+import Management from '../components/admin/Management.vue'
 
+Vue.use(VueAxios, axios)
 Vue.use(Router)
-Vue.use(Resource)
+axios.defaults.withCredentials = true
 
 const router = new Router({
   mode: 'history',
@@ -23,16 +27,8 @@ const router = new Router({
   		components: {default:Article, navigation: NavigationBar}
   	},
     {
-      path: '/articleEdit',
-      components: {default:ArticleEdit, navigation: NavigationBar}
-    },
-    {
-      path: '/articleEdit/:id',
-      components: {default:ArticleEdit, navigation: NavigationBar}
-    },
-    {
-      path: '/articleList',
-      components: {default:ArticleList, navigation: NavigationBar}
+      path: '/archives',
+      components: {default:Archives, navigation: NavigationBar}
     },
     {
     	path: '/articleDetail/:id',
@@ -47,12 +43,28 @@ const router = new Router({
       components: {default:Categories, navigation: NavigationBar}
     },
     {
-      path: '/addCategory',
+      path: '/admin/articleEdit',
+      components: {default:ArticleEdit, navigation: NavigationBar}
+    },
+    {
+      path: '/admin/articleEdit/:id',
+      component: ArticleEdit
+    },
+    {
+      path: '/admin/addCategory',
       component: AddCategory
     },
     {
-      path: '/login',
+      path: '/admin/articleList',
+      component: ArticleList
+    },
+    {
+      path: '/admin/login',
       component: Login
+    },
+    {
+      path: '/admin/management',
+      component: Management
     }
 	]
 })

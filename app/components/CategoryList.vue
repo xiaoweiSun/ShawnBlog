@@ -24,10 +24,10 @@
       // 获取分类列表
       this.$http.get('/api/categoryList').then(
         response => {
-        	this.categoryList = response.body.reverse()
+        	this.categoryList = response.data.reverse()
         	this.total = this.categoryList.length
         },
-        response => console.log(response.body)
+        response => console.log(response.data)
       )
     }
 	}

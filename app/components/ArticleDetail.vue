@@ -8,8 +8,6 @@
 					分类于
 					<router-link :to="'/categories/' + category._id" class="article_detail_meta_category_link">{{category.name}}</router-link>
 				</span>
-				<router-link :to="'/articleEdit/' + article._id" class="article_detail_meta_edit">编辑</router-link>
-				<span @click="deleteArticle(article._id)" class="article_detail_meta_edit">删除</span>
 			</div>
 			<div class="article_detail_content" v-html="compiledMarkdown()"></div>
 		</div>
@@ -30,7 +28,7 @@
 			let id = this.$route.params.id
 			this.$http.get('/api/articleDetail/' + id).then(
         response => {
-        	this.article = response.body
+        	this.article = response.data
         	this.category = this.article.category
         },
         response => console.log(response)
@@ -75,14 +73,6 @@
 	.article_detail_meta_category_link {
 		color: #999;
 		padding-left:2px;
-		text-decoration: underline;
-	}
-
-	.article_detail_meta_edit {
-		color: #999;
-		margin-left:5px;
-		border-left:1px solid;
-		padding-left:5px;
 		text-decoration: underline;
 	}
 

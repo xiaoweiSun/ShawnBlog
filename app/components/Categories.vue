@@ -20,12 +20,12 @@
     mounted: function () {
       let id = this.$route.params.id
       this.$http.get('/api/articleList/' + id).then(
-        response => this.articleList = response.body.reverse(),
-        response => console.log(response.body)
+        response => this.articleList = response.data.reverse(),
+        response => console.log(response.data)
       )
       this.$http.get('/api/categoryDetail/' + id).then(
-      	response => this.title = response.body.name,
-      	response => console.log(response.body)
+      	response => this.title = response.data.name,
+      	response => console.log(response.data)
       )
     }
 	}

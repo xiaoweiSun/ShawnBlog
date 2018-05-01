@@ -29,10 +29,9 @@
       // 获取文章列表
       this.$http.get('/api/articleList').then(
         response => {
-        	this.articleList = response.body.reverse()
-      		console.log(response.session)
+        	this.articleList = response.data.reverse()
         },
-        response => console.log(response.body)
+        response => console.log(response.data)
       )
     },
     methods: {

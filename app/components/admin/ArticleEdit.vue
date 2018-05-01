@@ -42,7 +42,7 @@
 	  	if(this.$route.params.id) {
 	  		this.$http.get('/api/articleDetail/' + this.$route.params.id).then(
           response => {
-            let article = response.body
+            let article = response.data
             this.title = article.title
             this.category = article.category._id
             this.category_old = this.category
@@ -52,8 +52,8 @@
         )
 	  	}
       this.$http.get('/api/categoryList').then(
-        response => this.categoryList = response.body,
-        response => console.log(response.body)
+        response => this.categoryList = response.data,
+        response => console.log(response.data)
       )
 	  },
 	  methods: {
@@ -81,7 +81,7 @@
 	    			category_old: this.category_old,
 	    			content: this.input
 	    		}
-	    		this.$http.post('/api/updateArticle', {
+	    		this.$http.post('/api/admin/updateArticle', {
 						articleInformation: articleInformation
 	    		}).then(
 	    			response => this.$router.push('/articleDetail/' + self.$route.params.id),
@@ -94,7 +94,7 @@
 	    			category: this.category,
 	    			content: this.input
 	    		}
-	    		this.$http.post('/api/saveArticle', {
+	    		this.$http.post('/api/admin/saveArticle', {
             articleInformation: articleInformation
           }).then(
             response => this.$router.push('/articleList'),

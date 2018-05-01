@@ -22,12 +22,12 @@
 				let self = this
 				this.$http.get('/api/getUser/' + this.username).then(
           response => {
-            if (self.password !== response.body.password) {
+            if (self.password !== response.data.password) {
               alert('用户名或密码不正确')
               console.log('用户名或密码不正确')
             } else {
             	let obj = {
-                name: self.name
+                name: self.username
               }
               self.$http.post('/api/signin', {
                 userInfo: obj
@@ -35,9 +35,8 @@
         				withCredentials: true
       				}).then(
 	              response => {
-	              	console.log(response.data)
 		              delete self.password
-		              self.$router.push('/')
+		              self.$router.push('/admin/management')
 		            },
 		            response => console.log('登录失败'+response)
 	            )

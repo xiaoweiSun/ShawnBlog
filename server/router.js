@@ -1,7 +1,13 @@
 const express = require('express')
-const db = require('./db.js')
+const db = require('./db')
+const check = require('./check')
+const checkLogin = check.checkLogin
+const checkNotLogin = check.checkNotLogin
 
 const router = express.Router()
+
+router.all('/api/admin/*', checkLogin)
+router.all('/api/signin', checkNotLogin)
 
 router.get('/api/getUser/:username', function (req, res) {
   db.User.findOne({ username: req.params.username }, function (err, docs) {
@@ -16,7 +22,6 @@ router.get('/api/getUser/:username', function (req, res) {
 // 登录
 router.post('/api/signin', function (req, res) {
   req.session.user = req.body.userInfo
-  req.session.save()
   res.send()
 })
 
@@ -28,7 +33,6 @@ router.get('/api/articleList', function(req, res) {
       console.error(err)
       return
     }
-    console.log(req.session)
     res.json(docs)
   })
 })
@@ -56,8 +60,29 @@ router.get('/api/articleDetail/:id', function (req, res) {
   })
 })
 
-router.post('/api/saveArticle', function(req, res) {
-	new db.Article(req.body.articleInformation).save(function (err) {
+// 分类列表
+router.get('/api/categoryList', function(req, res) {
+  db.Category.find({}, function (err, docs) {
+    if (err) {
+      console.error(err)
+      return
+    }
+    res.json(docs)
+  })
+})
+
+router.get('/api/categoryDetail/:id', function(req, res) {
+  db.Category.findOne({_id:req.params.id}, function(err, docs) {
+    if (err) {
+      console.error('api:api/categoryDetail/' + req.params.id + ',err:' + req.err)
+      return
+    }
+    res.json(docs)
+  })
+})
+
+router.post('/api/admin/saveArticle', function(req, res, next) {
+  new db.Article(req.body.articleInformation).save(function (err) {
     if (err) {
       res.status(500).send()
       console.log(err)
@@ -80,7 +105,7 @@ router.post('/api/saveArticle', function(req, res) {
   })
 })
 
-router.post('/api/updateArticle', function(req, res) {
+router.post('/api/admin/updateArticle', function(req, res) {
   let info = req.body.articleInformation
   db.Article.findOne({_id: info._id}, function (err, docs) {
     if (err) {
@@ -131,7 +156,7 @@ router.post('/api/updateArticle', function(req, res) {
 })
 
 // 文章删除
-router.get('/api/deleteArticle/:id', function (req, res) {
+router.get('/api/admin/deleteArticle/:id', function (req, res) {
   db.Article.remove({_id: req.params.id}, function (err) {
     if (err) {
       res.status(500).send()
@@ -163,7 +188,7 @@ router.get('/api/deleteArticle/:id', function (req, res) {
 })
 
 // 添加分类
-router.post('/api/category/save', function(req, res) {
+router.post('/api/admin/category/save', function(req, res) {
   new db.Category(req.body.categoryInformation).save(function (err) {
     res.status(500).send()
     console.log(err)
@@ -172,25 +197,5 @@ router.post('/api/category/save', function(req, res) {
   res.send()
 })
 
-// 分类列表
-router.get('/api/categoryList', function(req, res) {
-  db.Category.find({}, function (err, docs) {
-    if (err) {
-      console.error(err)
-      return
-    }
-    res.json(docs)
-  })
-})
-
-router.get('/api/categoryDetail/:id', function(req, res) {
-  db.Category.findOne({_id:req.params.id}, function(err, docs) {
-    if (err) {
-      console.error('api:api/categoryDetail/' + req.params.id + ',err:' + req.err)
-      return
-    }
-    res.json(docs)
-  })
-})
 
 module.exports = router

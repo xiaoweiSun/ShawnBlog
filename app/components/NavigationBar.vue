@@ -1,14 +1,17 @@
 <template>
 	<div class="navigation">
-		<div class="navigation-inner">
-			<div class="navigation-inner-meta"></div>
-			<ul class="navigation-inner-link">
+		<div class="navigation_inner">
+			<div class="navigation_inner_meta">
+				<div class="navigation_inner_meta_before"></div>
+				<div class="navigation_inner_meta_title">小V的博客</div>
+				<div class="navigation_inner_meta_after"></div>
+			</div>
+			<div class="navigation_inner_blank"></div>
+			<ul class="navigation_inner_link">
 				<li class="navigation_item"><router-link to="/">首页</router-link></li>
 				<li class="navigation_item"><router-link to="/categoryList">分类</router-link></li>
-				<li class="navigation_item"><router-link to="/articleList">文章列表</router-link></li>
+				<li class="navigation_item"><router-link to="/archives">归档</router-link></li>
 				<li class="navigation_item"><a href="https://github.com/xiaoweiSun/ShawnBlog" target="_blank">GIT</a></li>
-				<li class="navigation_item"><router-link to="/articleEdit">管理员入口</router-link></li>
-	      <li class="navigation_item"><router-link to="/addCategory">分类管理</router-link></li>
 	    </ul>
     </div>
 	</div>
@@ -32,15 +35,29 @@
 	right: 0;
 	z-index: 1000;
 }
-.navigation-inner {
+.navigation_inner {
 	width: 50%;
 	margin: 0 auto;
 	display:flex;
 }
-.navigation-inner-meta {
+.navigation_inner_blank {
 	flex-grow: 1;
 }
-.navigation-inner-link {
+.navigation_inner_meta {
+	margin: 25px 0;
+	margin-left: -10px;
+}
+.navigation_inner_meta_before, .navigation_inner_meta_after {
+	margin: 0 10px;
+	height:2px;
+	background: black;
+}
+.navigation_inner_meta_title {
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 36px;
+}
+.navigation_inner_link {
 	display: flex;
 	align-items: center;
 	list-style: none;

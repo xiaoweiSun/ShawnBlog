@@ -19,7 +19,7 @@
 					name: this.name,
 					count: 0
 				}
-				this.$http.post('/api/category/save', {
+				this.$http.post('/api/admin/category/save', {
           categoryInformation: categoryInformation
         }).then(
           response => this.$router.push('/'),
