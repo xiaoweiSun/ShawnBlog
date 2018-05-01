@@ -39,6 +39,10 @@
 	    }
 	  },
 	  mounted: function() {
+	  	if(!this.$session.get('jwt')) {
+      	this.$router.push('/')
+      	return
+			}
 	  	if(this.$route.params.id) {
 	  		this.$http.get('/api/articleDetail/' + this.$route.params.id).then(
           response => {

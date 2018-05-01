@@ -19,6 +19,10 @@
       }
     },
     mounted: function () {
+      if(!this.$session.get('jwt')) {
+        this.$router.push('/')
+        return
+      }
       // 获取文章列表
       this.$http.get('/api/articleList').then(
         response => this.articleList = response.data.reverse(),

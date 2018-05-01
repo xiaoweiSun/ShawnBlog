@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
 import Article from '../components/Article.vue'
 import NavigationBar from '../components/NavigationBar.vue'
 import Archives from '../components/Archives.vue'
@@ -15,9 +13,7 @@ import ArticleList from '../components/admin/ArticleList.vue'
 import Login from '../components/admin/Login.vue'
 import Management from '../components/admin/Management.vue'
 
-Vue.use(VueAxios, axios)
 Vue.use(Router)
-axios.defaults.withCredentials = true
 
 const router = new Router({
   mode: 'history',

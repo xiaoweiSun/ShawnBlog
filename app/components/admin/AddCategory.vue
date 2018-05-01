@@ -13,6 +13,11 @@
 				name: ''
 			}
 		},
+		mounted: function() {
+			if(!this.$session.get('jwt')) {
+      	this.$router.push('/')
+			}
+		},
 		methods: {
 			addCategory: function() {
 				let categoryInformation = {

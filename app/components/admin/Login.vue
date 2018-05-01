@@ -36,6 +36,8 @@
       				}).then(
 	              response => {
 		              delete self.password
+		              self.$session.start()
+              		self.$session.set('jwt', self.username)
 		              self.$router.push('/admin/management')
 		            },
 		            response => console.log('登录失败'+response)

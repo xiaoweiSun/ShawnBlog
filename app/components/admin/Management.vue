@@ -10,3 +10,18 @@
     </div>
 	</div>
 </template>
+
+<script>
+	export default {
+		data() {
+			return {
+				name: ''
+			}
+		},
+		mounted: function() {
+			if(!this.$session.get('jwt')) {
+      	this.$router.push('/')
+			}
+		}
+	}
+</script>

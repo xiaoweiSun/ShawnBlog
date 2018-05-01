@@ -45,6 +45,7 @@
     "express-session": "^1.15.6",
     "mongoose": "^5.0.16",
     "vue": "^2.5.16",
-    "vue-axios": "^2.1.1"
+    "vue-axios": "^2.1.1",
+    "vue-session": "^1.0.0"
   }
 }

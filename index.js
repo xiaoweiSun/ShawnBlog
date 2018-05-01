@@ -13,10 +13,9 @@ app.use(bodyParse.urlencoded({ extended: true }))
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
   secret: 'blog',
-  resave: true,
-  saveUninitialized: false,
+  resave: false,
+  saveUninitialized: true,
   cookie: {
-    secure: true,
     maxAge: 1000 * 60 * 60 * 24
   },
   store: new MongoStore({
@@ -26,7 +25,6 @@ app.use(session({
 
 app.use(cors({
   origin:['http://127.0.0.1:8080'],
-  methods:['GET','POST'],
   credentials: true
 }));
 
