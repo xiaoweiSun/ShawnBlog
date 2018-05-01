@@ -13,6 +13,13 @@ router.get('/api/getUser/:username', function (req, res) {
   })
 })
 
+// 登录
+router.post('/api/signin', function (req, res) {
+  req.session.user = req.body.userInfo
+  req.session.save()
+  res.send()
+})
+
 router.get('/api/articleList', function(req, res) {
   db.Article.find({})
   .populate('category', 'name')
@@ -21,12 +28,12 @@ router.get('/api/articleList', function(req, res) {
       console.error(err)
       return
     }
+    console.log(req.session)
     res.json(docs)
   })
 })
 
 router.get('/api/articleList/:categoryId', function(req, res) {
-  
   db.Article.find({category: req.params.categoryId})
   .exec(function (err, docs) {
     if (err) {

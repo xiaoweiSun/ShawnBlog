@@ -19,15 +19,28 @@
 		},
 		methods: {
 			signin: function() {
-				var self = this
+				let self = this
 				this.$http.get('/api/getUser/' + this.username).then(
           response => {
             if (self.password !== response.body.password) {
               alert('用户名或密码不正确')
               console.log('用户名或密码不正确')
             } else {
-              delete self.password
-              this.$router.push('/')
+            	let obj = {
+                name: self.name
+              }
+              self.$http.post('/api/signin', {
+                userInfo: obj
+              }, {
+        				withCredentials: true
+      				}).then(
+	              response => {
+	              	console.log(response.data)
+		              delete self.password
+		              self.$router.push('/')
+		            },
+		            response => console.log('登录失败'+response)
+	            )
             }
           },
           response => {

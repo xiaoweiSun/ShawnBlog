@@ -28,7 +28,10 @@
     mounted: function () {
       // 获取文章列表
       this.$http.get('/api/articleList').then(
-        response => this.articleList = response.body.reverse(),
+        response => {
+        	this.articleList = response.body.reverse()
+      		console.log(response.session)
+        },
         response => console.log(response.body)
       )
     },
