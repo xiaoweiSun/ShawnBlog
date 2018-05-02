@@ -53,7 +53,7 @@
 	.article_item {
 		position: relative;
 		max-height: 300px;
-		box-shadow: 0 0 5px rgba(201,201,201,.5);
+		box-shadow: 0 0 10px rgba(201,201,201,.5);
 		overflow: hidden;
 		margin-bottom: 60px;
 		padding:25px;

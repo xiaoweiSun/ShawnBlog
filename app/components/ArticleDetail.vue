@@ -50,7 +50,7 @@
 	}
 
 	.article_detail {
-		box-shadow: 0 0 5px rgba(201,201,201,.5);
+		box-shadow: 0 0 10px rgba(201,201,201,.5);
 		padding:25px;
 	}
 

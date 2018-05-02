@@ -167,7 +167,7 @@
 		border: 1px solid #ccc;
 	}
 
-	textarea:hover, #editor:hover {
+	textarea:hover, #editor div:hover {
 		overflow: auto;
 	}
 
@@ -178,10 +178,6 @@
 		font-size: 14px;
 		font-family: 'Monaco', courier, monospace;
 		padding: 20px;
-	}
-
-	code {
-		color: #f66;
 	}
 
 	.save_btn {
