@@ -25,34 +25,28 @@
 		methods: {
 			signin: function() {
 				let self = this
-				this.$http.get('/api/getUser/' + this.username).then(
+				let userInfo = {
+					username: this.username,
+					password: this.password
+				}
+				this.$http.post('/api/signin', {
+          userInfo: userInfo
+        }, {
+  				withCredentials: true
+				})
+				.then(
           response => {
-            if (self.password !== response.data.password) {
-              alert('用户名或密码不正确')
-              console.log('用户名或密码不正确')
-            } else {
-            	let obj = {
-                name: self.username
-              }
-              self.$http.post('/api/signin', {
-                userInfo: obj
-              }, {
-        				withCredentials: true
-      				})
-      				.then(
-	              response => {
-		              delete self.password
-		              self.$session.start()
-              		self.$session.set('jwt', self.username)
-		              self.$router.push('/admin/management')
-	            }).catch(function (error) {
-						    console.log(error);
-						  })
-            }
-          }
+          	if(response.data) {
+	            delete self.password
+	            self.$session.start()
+	        		self.$session.set('jwt', self.username)
+	            self.$router.push('/admin/management')
+	          } else {
+	          	alert('用户名或密码不正确')
+	          	console.log('用户名或密码不正确')
+	          }
+        	}
         ).catch(function (error) {
-          alert('用户名或密码不正确')
-          console.log('用户名或密码不正确')
 			    console.log(error);
 			  })
 			}

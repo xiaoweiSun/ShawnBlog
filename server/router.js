@@ -1,28 +1,27 @@
 const express = require('express')
 const db = require('./db')
-const check = require('./check')
-const checkLogin = check.checkLogin
-const checkNotLogin = check.checkNotLogin
 
 const router = express.Router()
 
-router.all('/api/admin/*', checkLogin)
-router.all('/api/signin', checkNotLogin)
-
-router.get('/api/getUser/:username', function (req, res) {
-  db.User.findOne({ username: req.params.username }, function (err, docs) {
-    if (err) {
-      console.error(err)
-      return
-    }
-    res.send(docs)
-  })
+router.get('/api/checkLogin', function(req, res) {
+  res.send(req.session.user)
 })
 
 // 登录
 router.post('/api/signin', function (req, res) {
-  req.session.user = req.body.userInfo
-  res.send()
+  db.User.findOne(req.body.userInfo, function (err, docs) {
+    if (err) {
+      console.error(err)
+      return
+    }
+    if (docs) {
+      var userInfo = {
+        name: req.body.userInfo.username
+      }
+    }
+    req.session.user = userInfo
+    res.send(docs)
+  })
 })
 
 router.get('/api/articleList', function(req, res) {

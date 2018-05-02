@@ -19,9 +19,17 @@
       }
     },
     mounted: function () {
+      let self = this
       if(!this.$session.get('jwt')) {
-        this.$router.push('/')
-        return
+        this.$http.get('/api/checkLogin').then(
+          response => {
+            self.$session.start()
+            self.$session.set('jwt', response.data.name)
+          }
+        ).catch(function(err) {
+          self.$router.push('/')
+          return
+        })
       }
       // 获取文章列表
       this.$http.get('/api/articleList').then(

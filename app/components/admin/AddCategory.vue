@@ -14,8 +14,20 @@
 			}
 		},
 		mounted: function() {
+			let self = this
 			if(!this.$session.get('jwt')) {
-      	this.$router.push('/')
+				this.$http.get('/api/checkLogin').then(
+					response => {
+						if(response.data && response.data.name) {
+							self.$session.start()
+	    				self.$session.set('jwt', response.data.name)
+	    			} else {
+	    				self.$router.push('/')
+	    			}
+					}
+				).catch(function(err) {
+    			console.log(err)
+				})
 			}
 		},
 		methods: {

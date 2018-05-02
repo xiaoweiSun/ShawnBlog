@@ -24,7 +24,7 @@ app.use(session({
 }))
 
 app.use(cors({
-  origin:['http://127.0.0.1:8080'],
+  origin:['http://127.0.0.1:8080','http://172.16.21.131:8080'],
   credentials: true
 }));
 

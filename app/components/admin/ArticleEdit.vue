@@ -39,9 +39,17 @@
 	    }
 	  },
 	  mounted: function() {
-	  	if(!this.$session.get('jwt')) {
-      	this.$router.push('/')
-      	return
+	  	let self = this
+			if(!this.$session.get('jwt')) {
+				this.$http.get('/api/checkLogin').then(
+					response => {
+						self.$session.start()
+    				self.$session.set('jwt', response.data.name)
+					}
+				).catch(function(err) {
+    			self.$router.push('/')
+    			return
+				})
 			}
 	  	if(this.$route.params.id) {
 	  		this.$http.get('/api/articleDetail/' + this.$route.params.id).then(
@@ -107,7 +115,7 @@
 	    		this.$http.post('/api/admin/saveArticle', {
             articleInformation: articleInformation
           }).then(
-            response => this.$router.push('/articleList')
+            response => this.$router.push('/admin/articleList')
 	        ).catch(function (error) {
 				    console.log(error);
 				  })
