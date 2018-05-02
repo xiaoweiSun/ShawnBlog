@@ -51,14 +51,15 @@
             this.category = article.category._id
             this.category_old = this.category
             this.input = article.content
-          },
-	    		response => console.log(response)
-        )
+          }).catch(function (error) {
+				    console.log(error);
+				  })
 	  	}
       this.$http.get('/api/categoryList').then(
-        response => this.categoryList = response.data,
-        response => console.log(response.data)
-      )
+        response => this.categoryList = response.data
+      ).catch(function (error) {
+		    console.log(error);
+		  })
 	  },
 	  methods: {
 	    update: _.debounce(function (e) {
@@ -75,6 +76,10 @@
         return y + '-' + m + '-' + d
       },
 	    submit: function() {
+	    	if(!this.title || !this.category || !this.input) {
+	    		alert('some field is blank')
+	    		return
+	    	}
 	    	let self = this;
 	    	if(this.$route.params.id) {
 					let articleInformation = {
@@ -88,9 +93,10 @@
 	    		this.$http.post('/api/admin/updateArticle', {
 						articleInformation: articleInformation
 	    		}).then(
-	    			response => this.$router.push('/articleDetail/' + self.$route.params.id),
-	    			response => console.log(response)
-	    		)
+	    			response => this.$router.push('/articleDetail/' + self.$route.params.id)
+	        ).catch(function (error) {
+				    console.log(error);
+				  })
 	    	} else {
 	    		let articleInformation = {
 	    			title: this.title,
@@ -101,9 +107,10 @@
 	    		this.$http.post('/api/admin/saveArticle', {
             articleInformation: articleInformation
           }).then(
-            response => this.$router.push('/articleList'),
-	    			response => console.log(response)
-          )
+            response => this.$router.push('/articleList')
+	        ).catch(function (error) {
+				    console.log(error);
+				  })
 	    	}
 	    }
 	  }
@@ -112,7 +119,7 @@
 
 <style>
 	.article_edit {
-		margin: 180px 50px;
+		margin: 90px 50px;
 	}
 
 	.article_title_label {
@@ -134,23 +141,22 @@
 		margin: 10px 0;
 	}
 
-	.article_edit_view {
-		box-shadow: 0 0 5px #ccc;
-	}
-
 	textarea, #editor div {
 	  display: inline-block;
 	  width: 49%;
-	  height: 80%;
+	  height: 800px;
 	  vertical-align: top;
 	  box-sizing: border-box;
 	  padding: 0 20px;
-	  overflow: scroll;
+	  overflow: hidden;
+	  border: 1px solid #ccc;
+	}
+
+	textarea:hover, #editor:hover {
+		overflow: auto;
 	}
 
 	textarea {
-	  border: none;
-	  border-right: 1px solid #ccc;
 	  resize: none;
 	  outline: none;
 	  background-color: #f6f6f6;

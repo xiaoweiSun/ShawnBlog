@@ -40,7 +40,7 @@ const router = new Router({
     },
     {
       path: '/admin/articleEdit',
-      components: {default:ArticleEdit, navigation: NavigationBar}
+      component: ArticleEdit
     },
     {
       path: '/admin/articleEdit/:id',

@@ -27,9 +27,10 @@
 				this.$http.post('/api/admin/category/save', {
           categoryInformation: categoryInformation
         }).then(
-          response => this.$router.push('/'),
-    			response => console.log(response)
-        )
+          response => this.$router.push('/')
+        ).catch(function (error) {
+			    console.log(error);
+			  })
 			}
 		}
 	}

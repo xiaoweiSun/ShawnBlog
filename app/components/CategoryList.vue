@@ -26,9 +26,10 @@
         response => {
         	this.categoryList = response.data.reverse()
         	this.total = this.categoryList.length
-        },
-        response => console.log(response.data)
-      )
+        }
+      ).catch(function (error) {
+		    console.log(error);
+		  })
     }
 	}
 

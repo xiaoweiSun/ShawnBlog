@@ -17,6 +17,11 @@
 				password: ''
 			}
 		},
+		mounted: function() {
+			if(this.$session.get('jwt')) {
+				this.$router.push('/admin/management')
+			}
+		},
 		methods: {
 			signin: function() {
 				let self = this
@@ -33,23 +38,23 @@
                 userInfo: obj
               }, {
         				withCredentials: true
-      				}).then(
+      				})
+      				.then(
 	              response => {
 		              delete self.password
 		              self.$session.start()
               		self.$session.set('jwt', self.username)
 		              self.$router.push('/admin/management')
-		            },
-		            response => console.log('登录失败'+response)
-	            )
+	            }).catch(function (error) {
+						    console.log(error);
+						  })
             }
-          },
-          response => {
-            alert('用户名或密码不正确')
-            console.log('用户名或密码不正确')
-            return
           }
-        )
+        ).catch(function (error) {
+          alert('用户名或密码不正确')
+          console.log('用户名或密码不正确')
+			    console.log(error);
+			  })
 			}
 		}
 	}

@@ -30,9 +30,10 @@
         response => {
         	this.article = response.data
         	this.category = this.article.category
-        },
-        response => console.log(response)
-      )
+        }
+      ).catch(function (error) {
+		    console.log(error);
+		  })
 		},
 		methods: {
       compiledMarkdown: function () {

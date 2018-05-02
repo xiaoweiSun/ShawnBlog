@@ -25,24 +25,27 @@
       }
       // 获取文章列表
       this.$http.get('/api/articleList').then(
-        response => this.articleList = response.data.reverse(),
-        response => console.log(response.data)
-      )
+        response => this.articleList = response.data.reverse()
+      ).catch(function (error) {
+        console.log(error);
+      })
     },
     methods: {
       deleteArticle: function (id) {
         this.$http.get('/api/admin/deleteArticle/' + id).then(
-          response => this.fetchData(),
-          response => console.log(response)
-        )
+          response => this.fetchData()
+        ).catch(function (error) {
+          console.log(error);
+        })
       },
       // 更新数据
       fetchData: function () {
         console.log('fetch data');
         this.$http.get('/api/articleList').then(
-          response => this.articleList = response.data.reverse(),
-          response => console.log(response)
-        )
+          response => this.articleList = response.data.reverse()
+        ).catch(function (error) {
+          console.log(error);
+        })
       }
     }
 	}

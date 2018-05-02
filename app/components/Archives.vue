@@ -23,9 +23,10 @@
     mounted: function () {
       // 获取分类列表
       this.$http.get('/api/articleList').then(
-        response => this.generateArchives(response.data.reverse()),
-        response => console.log(response.data)
-      )
+        response => this.generateArchives(response.data.reverse())
+      ).catch(function (error) {
+        console.log(error);
+      })
     },
     methods: {
       generateArchives: function(articleList) {
