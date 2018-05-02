@@ -28,6 +28,7 @@
 			return {
 				input: '# hello',
 				title: '',
+				date: '',
 				category: '',
 				category_old: '',
 				categoryList: []
@@ -59,6 +60,7 @@
 					response => {
 						let article = response.data
 						this.title = article.title
+						this.date = article.date
 						this.category = article.category._id
 						this.category_old = this.category
 						this.input = article.content
@@ -98,7 +100,7 @@
 					let articleInformation = {
 						_id: this.$route.params.id,
 						title: this.title,
-						date: this.getDate(),
+						date: this.date,
 						category: this.category,
 						category_old: this.category_old,
 						content: this.input
