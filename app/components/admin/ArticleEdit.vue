@@ -1,5 +1,6 @@
 <template>
 	<div class="article_edit">
+		<router-link to="/admin/articleList" class="article_back_to_list">返回</router-link>
 		<div id="title" class="article_title_label">标题</div>
 		<input v-model="title" type="text" class="article_title_input">
 
@@ -135,6 +136,10 @@
 <style>
 	.article_edit {
 		margin: 90px 50px;
+	}
+
+	.article_back_to_list {
+		text-decoration: underline;
 	}
 
 	.article_title_label {

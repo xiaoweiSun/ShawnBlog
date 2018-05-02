@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="add_category">
 		名称：
 		<input v-model="name" placeholder="分类名称">
 		<button @click="addCategory()">确定</button>
@@ -47,3 +47,10 @@
 		}
 	}
 </script>
+
+<style>
+	.add_category {
+		width:200px;
+		margin: 90px auto;
+	}
+</style>

@@ -4,7 +4,7 @@
 			<li v-for="article in articleList">
 				<router-link :to="'/articleDetail/'+article._id">{{article.title}}</router-link>
 				<router-link :to="'/admin/articleEdit/' + article._id">编辑</router-link>
-				<span @click="deleteArticle(article._id)">删除</span>
+				<span class="delete_btn" @click="deleteArticle(article._id)">删除</span>
 			</li>
 		</ul>
 	</div>
@@ -71,6 +71,7 @@
 		cursor: pointer;
 	}
 	.article_list {
-		margin-top: 180px;
+    width: 50%;
+		margin: 90px auto;
 	}
 </style>
