@@ -18,28 +18,28 @@
 	import marked from 'marked'
 	export default {
 		name: 'articleDetail',
-		data() {
+		data () {
 			return {
 				article: {},
 				category: {}
 			}
 		},
-		mounted() {
+		mounted () {
 			let id = this.$route.params.id
 			this.$http.get('/api/articleDetail/' + id).then(
-        response => {
-        	this.article = response.data
-        	this.category = this.article.category
-        }
-      ).catch(function (error) {
-		    console.log(error);
-		  })
+				response => {
+					this.article = response.data
+					this.category = this.article.category
+				}
+			).catch(function (error) {
+				console.log(error);
+			})
 		},
 		methods: {
-      compiledMarkdown: function () {
-        return marked(this.article.content || '', {sanitize: true})
-      }
-    }
+			compiledMarkdown: function () {
+				return marked(this.article.content || '', {sanitize: true})
+			}
+		}
 	}
 </script>
 

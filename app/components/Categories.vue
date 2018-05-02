@@ -10,26 +10,30 @@
 
 <script>
 	export default {
-    name: 'articleList',
-    data() {
-      return {
-        articleList: [],
-        title: ''
-      }
-    },
-    mounted: function () {
-      let id = this.$route.params.id
-      this.$http.get('/api/articleList/' + id).then(
-        response => this.articleList = response.data.reverse()
-      ).catch(function (error) {
-        console.log(error);
-      })
-      this.$http.get('/api/categoryDetail/' + id).then(
-      	response => this.title = response.data.name
-      ).catch(function (error) {
-        console.log(error);
-      })
-    }
+		name: 'articleList',
+		data () {
+			return {
+				articleList: [],
+				title: ''
+			}
+		},
+		mounted: function () {
+			let id = this.$route.params.id
+			this.$http.get('/api/articleList/' + id).then(
+				response => {
+					this.articleList = response.data.reverse()
+				}
+			).catch(function (error) {
+				console.log(error);
+			})
+			this.$http.get('/api/categoryDetail/' + id).then(
+				response => {
+					this.title = response.data.name
+				}
+			).catch(function (error) {
+				console.log(error);
+			})
+		}
 	}
 </script>
 
@@ -45,15 +49,15 @@
 	}
 	.categories_title:before {
 		position: absolute;
-    top: 50%;
-    margin-left: -4px;
-    margin-top: -4px;
-    width: 8px;
-    height: 8px;
-    content: " ";
-    left: 0;
-    background: #bbb;
-    border-radius: 50%;
+		top: 50%;
+		margin-left: -4px;
+		margin-top: -4px;
+		width: 8px;
+		height: 8px;
+		content: " ";
+		left: 0;
+		background: #bbb;
+		border-radius: 50%;
 	}
 	.categories_article {
 		margin: 30px 0;
@@ -65,16 +69,16 @@
 	}
 	.categories_article:before {
 		position: absolute;
-    top: 14px;
-    width: 6px;
-    height: 6px;
-    margin-left: -4px;
-    border: 1px solid #fff;
-    transition-property: background;
-    content: " ";
-    left: 0;
-    background: #bbb;
-    border-radius: 50%;
+		top: 14px;
+		width: 6px;
+		height: 6px;
+		margin-left: -4px;
+		border: 1px solid #fff;
+		transition-property: background;
+		content: " ";
+		left: 0;
+		background: #bbb;
+		border-radius: 50%;
 	}
 	.categories_article_date {
 		margin: 0 20px;

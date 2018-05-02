@@ -13,26 +13,25 @@
 
 <script>
 	export default {
-    name: 'categoryList',
-    data() {
-      return {
-        categoryList: [],
-        total: 0
-      }
-    },
-    mounted: function () {
-      // 获取分类列表
-      this.$http.get('/api/categoryList').then(
-        response => {
-        	this.categoryList = response.data.reverse()
-        	this.total = this.categoryList.length
-        }
-      ).catch(function (error) {
-		    console.log(error);
-		  })
-    }
+		name: 'categoryList',
+		data () {
+			return {
+				categoryList: [],
+				total: 0
+			}
+		},
+		mounted: function () {
+			// 获取分类列表
+			this.$http.get('/api/categoryList').then(
+				response => {
+					this.categoryList = response.data.reverse()
+					this.total = this.categoryList.length
+				}
+			).catch(function (error) {
+				console.log(error);
+			})
+		}
 	}
-
 </script>
 
 <style>

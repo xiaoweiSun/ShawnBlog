@@ -16,52 +16,52 @@ import Management from '../components/admin/Management.vue'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
-  routes: [
-  	{
-  		path: '/',
-  		components: {default:Article, navigation: NavigationBar}
-  	},
-    {
-      path: '/archives',
-      components: {default:Archives, navigation: NavigationBar}
-    },
-    {
-    	path: '/articleDetail/:id',
-    	components: {default:ArticleDetail, navigation: NavigationBar}
-    },
-    {
-      path: '/categoryList',
-      components: {default:CategoryList, navigation: NavigationBar}
-    },
-    {
-      path: '/categories/:id',
-      components: {default:Categories, navigation: NavigationBar}
-    },
-    {
-      path: '/admin/articleEdit',
-      component: ArticleEdit
-    },
-    {
-      path: '/admin/articleEdit/:id',
-      component: ArticleEdit
-    },
-    {
-      path: '/admin/addCategory',
-      component: AddCategory
-    },
-    {
-      path: '/admin/articleList',
-      component: ArticleList
-    },
-    {
-      path: '/admin/login',
-      component: Login
-    },
-    {
-      path: '/admin/management',
-      component: Management
-    }
+	mode: 'history',
+	routes: [
+		{
+			path: '/',
+			components: {default: Article, navigation: NavigationBar}
+		},
+		{
+			path: '/archives',
+			components: {default: Archives, navigation: NavigationBar}
+		},
+		{
+			path: '/articleDetail/:id',
+			components: {default: ArticleDetail, navigation: NavigationBar}
+		},
+		{
+			path: '/categoryList',
+			components: {default: CategoryList, navigation: NavigationBar}
+		},
+		{
+			path: '/categories/:id',
+			components: {default: Categories, navigation: NavigationBar}
+		},
+		{
+			path: '/admin/articleEdit',
+			component: ArticleEdit
+		},
+		{
+			path: '/admin/articleEdit/:id',
+			component: ArticleEdit
+		},
+		{
+			path: '/admin/addCategory',
+			component: AddCategory
+		},
+		{
+			path: '/admin/articleList',
+			component: ArticleList
+		},
+		{
+			path: '/admin/login',
+			component: Login
+		},
+		{
+			path: '/admin/management',
+			component: Management
+		}
 	]
 })
 

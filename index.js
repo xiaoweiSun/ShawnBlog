@@ -12,20 +12,20 @@ app.use(bodyParse.urlencoded({ extended: true }))
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
-  secret: 'blog',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24
-  },
-  store: new MongoStore({
-    url: 'mongodb://localhost:27017/blog'
-  })
+	secret: 'blog',
+	resave: false,
+	saveUninitialized: true,
+	cookie: {
+		maxAge: 1000 * 60 * 60 * 24
+	},
+	store: new MongoStore({
+		url: 'mongodb://localhost:27017/blog'
+	})
 }))
 
 app.use(cors({
-  origin:['http://127.0.0.1:8080','http://172.16.21.131:8080'],
-  credentials: true
+	origin:['http://127.0.0.1:8080','http://172.16.21.131:8080'],
+	credentials: true
 }));
 
 

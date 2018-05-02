@@ -1,40 +1,58 @@
 module.exports = {
-  devtool: 'source-map',
-  entry:  __dirname + "/app/main.js",//已多次提及的唯一入口文件
-  output: {
-    path: __dirname + "/public",//打包后的文件存放的地方
-    filename: "bundle.js"//打包后输出文件的文件名
-  },
-
-  devServer: {
-    contentBase: "./public",//本地服务器所加载的页面所在的目录
-    historyApiFallback: true,//不跳转
-    // inline: true,//实时刷新
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000/'
-      }
-    }
-  },
-	module: {
-    rules: [
-      {
-        test: /(\.jsx|\.js)$/,
-        use: {
-          loader: "babel-loader"
-        },
-        exclude: /node_modules/
-      },
-      {
-      	test: /(\.vue)$/,
-        use: {
-          loader: "vue-loader"
-        },
-        exclude: /node_modules/
-      }
-    ]
+	devtool: 'source-map',
+	entry:	__dirname + "/app/main.js",//已多次提及的唯一入口文件
+	output: {
+		path: __dirname + "/public",//打包后的文件存放的地方
+		filename: "bundle.js"//打包后输出文件的文件名
 	},
-  performance: {
-    hints: false
-  }
+
+	devServer: {
+		contentBase: "./public",//本地服务器所加载的页面所在的目录
+		historyApiFallback: true,//不跳转
+		// inline: true,//实时刷新
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3000/'
+			}
+		}
+	},
+	module: {
+		rules: [
+			{
+				test: /(\.jsx|\.js)$/,
+				use: [
+					{
+						loader: "babel-loader"
+					},
+					{
+						loader: "eslint-loader",
+            options: {
+              formatter: require('eslint-friendly-formatter'),   // 编译后错误报告格式
+              fix: true
+            }
+					}
+				],
+				exclude: /node_modules/
+			},
+			{
+				test: /(\.vue)$/,
+				use: [
+					{
+						loader: "vue-loader"
+					},
+					{
+						loader: "eslint-loader",
+						options: {
+							formatter: require('eslint-friendly-formatter'),	 // 编译后错误报告格式
+              fix: true
+						}
+					}
+				],
+				exclude: /node_modules/
+			}
+		]
+	},
+	performance: {
+		hints: false
+	}
 }

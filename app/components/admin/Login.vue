@@ -11,44 +11,44 @@
 
 <script>
 	export default {
-		data() {
+		data () {
 			return {
 				username: '',
 				password: ''
 			}
 		},
-		mounted: function() {
-			if(this.$session.get('jwt')) {
+		mounted: function () {
+			if (this.$session.get('jwt')) {
 				this.$router.push('/admin/management')
 			}
 		},
 		methods: {
-			signin: function() {
+			signin: function () {
 				let self = this
 				let userInfo = {
 					username: this.username,
 					password: this.password
 				}
 				this.$http.post('/api/signin', {
-          userInfo: userInfo
-        }, {
-  				withCredentials: true
+					userInfo: userInfo
+				}, {
+					withCredentials: true
 				})
-				.then(
-          response => {
-          	if(response.data) {
-	            delete self.password
-	            self.$session.start()
-	        		self.$session.set('jwt', self.username)
-	            self.$router.push('/admin/management')
-	          } else {
-	          	alert('用户名或密码不正确')
-	          	console.log('用户名或密码不正确')
-	          }
-        	}
-        ).catch(function (error) {
-			    console.log(error);
-			  })
+					.then(
+						response => {
+							if (response.data) {
+								delete self.password
+								self.$session.start()
+								self.$session.set('jwt', self.username)
+								self.$router.push('/admin/management')
+							} else {
+								alert('用户名或密码不正确')
+								console.log('用户名或密码不正确')
+							}
+						}
+					).catch(function (error) {
+						console.log(error);
+					})
 			}
 		}
 	}
@@ -74,13 +74,13 @@
 	}
 	.login_save_btn {
 		color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
-    padding: 6px 12px;
-    line-height: 1.5;
-    text-align: center;
-    vertical-align: center;
-    border: 1px solid transparent;
-    border-radius: 4px;
+		background-color: #337ab7;
+		border-color: #2e6da4;
+		padding: 6px 12px;
+		line-height: 1.5;
+		text-align: center;
+		vertical-align: center;
+		border: 1px solid transparent;
+		border-radius: 4px;
 	}
 </style> 

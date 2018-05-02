@@ -12,16 +12,16 @@
 				<li class="navigation_item"><router-link to="/categoryList">分类</router-link></li>
 				<li class="navigation_item"><router-link to="/archives">归档</router-link></li>
 				<li class="navigation_item"><a href="https://github.com/xiaoweiSun/ShawnBlog" target="_blank">GIT</a></li>
-	    </ul>
-    </div>
+			</ul>
+		</div>
 	</div>
 </template>
 
 <script>
-  export default {
-    data: () => ({
-    })
-  }
+	export default {
+		data: () => ({
+		})
+	}
 </script>
 
 <style>
