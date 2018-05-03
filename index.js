@@ -24,10 +24,10 @@ app.use(session({
 }))
 
 app.use(cors({
-	origin:'http://127.0.0.1:8080',
+	origin:'http://127.0.0.1:80',
 	credentials: true
 }));
 
 app.use(router)
 
-app.listen(8080)
+app.listen(80)
