@@ -1,12 +1,15 @@
 const express = require('express')
 const router = require('./server/router')
 const bodyParse = require('body-parser')
+const history = require('connect-history-api-fallback')
 const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 var app = express()
 
-app.use(express.static(__dirname + '/build'))
+const staticFileMiddleware = express.static(__dirname + '/build')
+
+app.use(staticFileMiddleware)
 app.use(bodyParse.json())
 app.use(bodyParse.urlencoded({ extended: true }))
 
@@ -28,6 +31,24 @@ app.use(cors({
 	credentials: true
 }));
 
+var middleware = history({
+	verbose: true,
+	disableDotRule: true,
+	rewrites: [
+    {
+      from: /(\.js)$/,
+      to: function(context) {
+      	var pathName = context.parsedUrl.pathname
+      	var index = pathName.indexOf('bundle')
+        return '/' + pathName.slice(index)
+      }
+    }
+  ]
+});
+
+app.use(middleware)
+
+app.use(staticFileMiddleware)
 app.use(router)
 
 app.listen(80)

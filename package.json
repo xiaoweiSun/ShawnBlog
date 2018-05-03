@@ -4,7 +4,7 @@
   "description": "My personal blog",
   "main": "index.js",
   "scripts": {
-    "server": "webpack-dev-server --open --host 0.0.0.0",
+    "server": "webpack-dev-server --host 0.0.0.0",
     "build": "set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress"
   },
   "repository": {
@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "connect-history-api-fallback": "^1.5.0",
     "connect-mongo": "^2.0.1",
     "cors": "^2.8.4",
     "express-session": "^1.15.6",
