@@ -6,7 +6,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 var app = express()
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/build'))
 app.use(bodyParse.json())
 app.use(bodyParse.urlencoded({ extended: true }))
 

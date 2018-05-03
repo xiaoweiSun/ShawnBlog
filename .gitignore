@@ -57,8 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
-# bundle.js
-public/bundle.*
+# build
+build/
 
 #mac
 .DS_Store
