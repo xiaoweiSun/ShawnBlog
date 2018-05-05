@@ -45,8 +45,15 @@
 
 <style>
 	.article {
-		width: 50%;
+		width: 700px;
 		margin: 180px auto;
+	}
+	
+	@media (max-width: 767px) {
+		.article {
+			width: auto;
+			margin: 180px 20px;
+		}
 	}
 
 	.article_detail {

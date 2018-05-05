@@ -41,8 +41,16 @@
 	.categories {
 		margin:180px auto;
 		border-left: 1px solid #f5f5f5;
-		width: 50%;
+		width: 700px;
 	}
+		
+	@media (max-width: 767px) {
+		.categories {
+			width: auto;
+			margin: 180px 20px;
+		}
+	}
+
 	.categories_title {
 		padding-left: 20px;
 		position: relative;

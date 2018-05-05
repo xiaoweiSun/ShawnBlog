@@ -36,9 +36,15 @@
 	z-index: 1000;
 }
 .navigation_inner {
-	width: 50%;
+	width: 700px;
 	margin: 0 auto;
 	display:flex;
+}
+@media (max-width: 767px) {
+	.navigation_inner {
+		width: 100%;
+		margin: 0 20px;
+	}
 }
 .navigation_inner_blank {
 	flex-grow: 1;

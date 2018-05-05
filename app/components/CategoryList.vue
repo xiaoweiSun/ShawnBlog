@@ -37,8 +37,16 @@
 <style>
 	.category_list {
 		margin: 180px auto;
-		width: 50%;
+		width: 700px;
+	}	
+		
+	@media (max-width: 767px) {
+		.category_list {
+			width: auto;
+			margin: 180px 20px;
+		}
 	}
+
 	.category_list_stat {
 		text-align: center;
 	}

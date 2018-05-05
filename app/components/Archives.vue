@@ -61,8 +61,16 @@
 	.archive {
 		margin:180px auto;
 		border-left: 1px solid #f5f5f5;
-		width: 50%;
+		width: 700px;
 	}
+
+	@media (max-width: 767px) {
+		.archive {
+			width: auto;
+			margin: 180px 20px;
+		}
+	}
+
 	.archive_stat {
 		margin: 30px 0;
 		padding-left: 20px;
