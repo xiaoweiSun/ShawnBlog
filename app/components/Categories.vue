@@ -11,12 +11,10 @@
 <script>
 	export default {
 		name: 'articleList',
-		data () {
-			return {
-				articleList: [],
-				title: ''
-			}
-		},
+		data: () => ({
+			articleList: [],
+			title: ''
+		}),
 		mounted: function () {
 			let id = this.$route.params.id
 			this.$http.get('/api/articleList/' + id).then(

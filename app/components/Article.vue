@@ -20,11 +20,9 @@
 <script>
 	import marked from 'marked'
 	export default {
-		data () {
-			return {
-				articleList: [],
-			}
-		},
+		data: () => ({
+			articleList: [],
+		}),
 		mounted: function () {
 			// 获取文章列表
 			this.$http.get('/api/articleList')

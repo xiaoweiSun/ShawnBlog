@@ -14,12 +14,10 @@
 <script>
 	export default {
 		name: 'archiveList',
-		data () {
-			return {
-				archives: [],
-				total: 0
-			}
-		},
+		data: () => ({
+			archives: [],
+			total: 0
+		}),
 		mounted: function () {
 			// 获取分类列表
 			this.$http.get('/api/articleList').then(

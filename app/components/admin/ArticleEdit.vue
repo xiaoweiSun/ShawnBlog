@@ -25,31 +25,28 @@
 	import _ from 'lodash'
 	import marked from 'marked'
 	export default {
-		data () {
-			return {
-				input: '# hello',
-				title: '',
-				date: '',
-				category: '',
-				category_old: '',
-				categoryList: []
-			}
-		},
+		data: () => ({
+			input: '# hello',
+			title: '',
+			date: '',
+			category: '',
+			category_old: '',
+			categoryList: []
+		}),
 		computed: {
 			compiledMarkdown: function () {
 				return marked(this.input, { sanitize: true })
 			}
 		},
 		mounted: function () {
-			let self = this
 			if (!this.$session.get('jwt')) {
 				this.$http.get('/api/checkLogin').then(
 					response => {
 						if (response.data && response.data.name) {
-							self.$session.start()
-							self.$session.set('jwt', response.data.name)
+							this.$session.start()
+							this.$session.set('jwt', response.data.name)
 						} else {
-							self.$router.push('/')
+							this.$router.push('/')
 						}
 					}
 				).catch(function (err) {
@@ -96,7 +93,6 @@
 					alert('some field is blank')
 					return
 				}
-				let self = this;
 				if (this.$route.params.id) {
 					let articleInformation = {
 						_id: this.$route.params.id,
@@ -109,7 +105,7 @@
 					this.$http.post('/api/admin/updateArticle', {
 						articleInformation: articleInformation
 					}).then(
-						response => this.$router.push('/articleDetail/' + self.$route.params.id)
+						response => this.$router.push('/articleDetail/' + this.$route.params.id)
 					).catch(function (error) {
 						console.log(error);
 					})

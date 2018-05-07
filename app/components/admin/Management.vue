@@ -13,21 +13,17 @@
 
 <script>
 	export default {
-		data () {
-			return {
-				name: ''
-			}
-		},
+		data: () => ({
+		}),
 		mounted: function () {
-			let self = this
 			if (!this.$session.get('jwt')) {
 				this.$http.get('/api/checkLogin').then(
 					response => {
 						if (response.data && response.data.name) {
-							self.$session.start()
-							self.$session.set('jwt', response.data.name)
+							this.$session.start()
+							this.$session.set('jwt', response.data.name)
 						} else {
-							self.$router.push('/')
+							this.$router.push('/')
 						}
 					}
 				).catch(function (err) {

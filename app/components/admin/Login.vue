@@ -11,12 +11,10 @@
 
 <script>
 	export default {
-		data () {
-			return {
-				username: '',
-				password: ''
-			}
-		},
+		data: () => ({
+			username: '',
+			password: ''
+		}),
 		mounted: function () {
 			if (this.$session.get('jwt')) {
 				this.$router.push('/admin/management')
@@ -24,7 +22,6 @@
 		},
 		methods: {
 			signin: function () {
-				let self = this
 				let userInfo = {
 					username: this.username,
 					password: this.password
@@ -37,10 +34,10 @@
 					.then(
 						response => {
 							if (response.data) {
-								delete self.password
-								self.$session.start()
-								self.$session.set('jwt', self.username)
-								self.$router.push('/admin/management')
+								delete this.password
+								this.$session.start()
+								this.$session.set('jwt', this.username)
+								this.$router.push('/admin/management')
 							} else {
 								alert('用户名或密码不正确')
 								console.log('用户名或密码不正确')

@@ -14,12 +14,10 @@
 <script>
 	export default {
 		name: 'categoryList',
-		data () {
-			return {
-				categoryList: [],
-				total: 0
-			}
-		},
+		data: () => ({
+			categoryList: [],
+			total: 0
+		}),
 		mounted: function () {
 			// 获取分类列表
 			this.$http.get('/api/categoryList').then(

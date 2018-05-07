@@ -18,12 +18,10 @@
 	import marked from 'marked'
 	export default {
 		name: 'articleDetail',
-		data () {
-			return {
-				article: {},
-				category: {}
-			}
-		},
+		data: () => ({
+			article: {},
+			category: {}
+		}),
 		mounted () {
 			let id = this.$route.params.id
 			this.$http.get('/api/articleDetail/' + id).then(

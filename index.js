@@ -32,7 +32,6 @@ app.use(cors({
 }));
 
 var middleware = history({
-	verbose: true,
 	disableDotRule: true,
 	rewrites: [
     {
