@@ -63,7 +63,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.delete_btn {
 		cursor: pointer;
 	}

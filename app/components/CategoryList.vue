@@ -32,12 +32,7 @@
 	}
 </script>
 
-<style>
-	.category_list {
-		margin: 180px auto;
-		width: 700px;
-	}	
-		
+<style lang="scss">
 	@media (max-width: 767px) {
 		.category_list {
 			width: auto;
@@ -45,22 +40,31 @@
 		}
 	}
 
-	.category_list_stat {
-		text-align: center;
-	}
-	.category_list_detail {
-		margin-top: 20px;
-		list-style: none;
-		padding: 0;
-	}
-	.category_list_item {
-		margin: 5px 10px;
-		line-height: 2;
-	}
-	.category_list_item_name {
-		border-bottom: 1px solid #ccc;
-	}
-	.category_list_item_count {
-		color: #ccc;
+	.category_list {
+		margin: 180px auto;
+		width: 700px;
+		
+		&_stat {
+			text-align: center;
+		}
+
+		&_detail {
+			margin-top: 20px;
+			list-style: none;
+			padding: 0;
+		}
+
+		&_item {
+			margin: 5px 10px;
+			line-height: 2;
+
+			&_name {
+				border-bottom: 1px solid #ccc;
+			}
+
+			&_count {
+				color: #ccc;
+			}
+		}
 	}
 </style>

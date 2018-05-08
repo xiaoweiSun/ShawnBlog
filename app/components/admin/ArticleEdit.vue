@@ -129,32 +129,35 @@
 	}
 </script>
 
-<style>
-	.article_edit {
-		margin: 90px 50px;
-	}
+<style lang="scss">
+	.article{
 
-	.article_back_to_list {
-		text-decoration: underline;
-	}
+		&_edit {
+			margin: 90px 50px;
+		}
 
-	.article_title_label {
-		margin: 10px 0;
-	}
+		&_back_to_list {
+			text-decoration: underline;
+		}
 
-	.article_title_input {
-		width: 100%;
-		line-height: 2;
-	}
+		&_title_label {
+			margin: 10px 0;
+		}
 
-	.article_category {
-		margin: 10px;
-		margin-left: 0;
-		line-height: 2;
-	}
+		&_title_input {
+			width: 100%;
+			line-height: 2;
+		}
 
-	.article_content_label {
-		margin: 10px 0;
+		&_category {
+			margin: 10px;
+			margin-left: 0;
+			line-height: 2;
+		}
+
+		&_content_label {
+			margin: 10px 0;
+		}
 	}
 
 	textarea, #editor div {

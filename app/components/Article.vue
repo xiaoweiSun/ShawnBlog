@@ -42,12 +42,7 @@
 	}
 </script>
 
-<style>
-	.article {
-		width: 700px;
-		margin: 180px auto;
-	}
-
+<style lang="scss">
 	@media (max-width: 767px) {
 		.article {
 			width: auto;
@@ -55,37 +50,42 @@
 		}
 	}
 
-	.article_item {
-		position: relative;
-		max-height: 300px;
-		box-shadow: 0 0 10px rgba(201,201,201,.5);
-		overflow: hidden;
-		margin-bottom: 60px;
-		padding:25px;
-	}
+	.article {
+		width: 700px;
+		margin: 180px auto;
 
-	.article_title {
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-		font-weight: bold;
-	}
+		&_item {
+			position: relative;
+			max-height: 300px;
+			box-shadow: 0 0 10px rgba(201,201,201,.5);
+			overflow: hidden;
+			margin-bottom: 60px;
+			padding:25px;
+		}
 
-	.article_meta {
-		margin:5px 0 25px;
-		font-size: 12px;
-		color: #999;
-	}
+		&_title {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			font-weight: bold;
+		}
 
-	.article_meta_category {
-		margin-left:5px;
-		border-left:1px solid;
-		padding-left:5px;
-	}
+		&_meta {
+			margin:5px 0 25px;
+			font-size: 12px;
+			color: #999;
 
-	.article_meta_category_link {
-		padding-left:2px;
-		text-decoration: underline;
+			&_category {
+				margin-left:5px;
+				border-left:1px solid;
+				padding-left:5px;
+
+				&_link {
+					padding-left:2px;
+					text-decoration: underline;
+				}
+			}
+		}
 	}
 
 	.read_all {
@@ -96,18 +96,18 @@
 		padding-top: 80px;
 		background-image: -webkit-gradient(linear,left top, left bottom,from(rgba(255,255,255,0)),color-stop(70%, #fff));
 		background-image: linear-gradient(-180deg,rgba(255,255,255,0) 0%,#fff 70%);
-	}
-
-	.read_all_btn {
-		display: block;
-		width:120px;
-		margin:0 auto 25px;
-		cursor: pointer;
-		border-radius:4px;
-		text-align:center;
-		border: 1px solid #c6c6c6;
-		background-color: #fff;
-		-webkit-transition: background-color .1s ease-in-out;
-		transition: background-color .1s ease-in-out;
+	
+		&_btn {
+			display: block;
+			width:120px;
+			margin:0 auto 25px;
+			cursor: pointer;
+			border-radius:4px;
+			text-align:center;
+			border: 1px solid #c6c6c6;
+			background-color: #fff;
+			-webkit-transition: background-color .1s ease-in-out;
+			transition: background-color .1s ease-in-out;
+		}
 	}
 </style>

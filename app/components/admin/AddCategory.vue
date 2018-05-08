@@ -44,7 +44,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.add_category {
 		width:200px;
 		margin: 90px auto;

@@ -34,7 +34,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.management {
 		width: 300px;
 		margin: 90px auto;

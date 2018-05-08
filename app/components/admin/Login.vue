@@ -51,33 +51,37 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.login {
 		width: 50%;
 		margin: 200px auto;
-	}
-	.login_title {
-		text-align: center;
-	}
-	.login_input {
-		display: block;
-		margin: 10px auto;
-		width: 200px;
-		height: 30px;
-	}
-	.login_save {
-		margin-top: 20px;
-		text-align: center;
-	}
-	.login_save_btn {
-		color: #fff;
-		background-color: #337ab7;
-		border-color: #2e6da4;
-		padding: 6px 12px;
-		line-height: 1.5;
-		text-align: center;
-		vertical-align: center;
-		border: 1px solid transparent;
-		border-radius: 4px;
+	
+		&_title {
+			text-align: center;
+		}
+
+		&_input {
+			display: block;
+			margin: 10px auto;
+			width: 200px;
+			height: 30px;
+		}
+
+		&_save {
+			margin-top: 20px;
+			text-align: center;
+
+			&_btn {
+				color: #fff;
+				background-color: #337ab7;
+				border-color: #2e6da4;
+				padding: 6px 12px;
+				line-height: 1.5;
+				text-align: center;
+				vertical-align: center;
+				border: 1px solid transparent;
+				border-radius: 4px;
+			}
+		}
 	}
 </style> 

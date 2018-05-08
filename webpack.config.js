@@ -40,7 +40,12 @@ module.exports = {
 				test: /(\.vue)$/,
 				use: [
 					{
-						loader: "vue-loader"
+						loader: "vue-loader",
+            options: {
+              loaders: {
+                scss: 'vue-style-loader!css-loader!sass-loader' // <style lang="scss">
+              }
+            }
 					},
 					{
 						loader: "eslint-loader",
