@@ -63,3 +63,7 @@ build/
 #mac
 .DS_Store
 
+#idea
+.idea/
+ShawnBlog.iml
+

@@ -23,7 +23,7 @@
 							this.$session.start()
 							this.$session.set('jwt', response.data.name)
 						} else {
-							this.$router.push('/')
+							this.$router.push('/admin/login')
 						}
 					}
 				).catch(function (err) {

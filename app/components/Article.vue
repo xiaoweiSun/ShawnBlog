@@ -28,7 +28,7 @@
 			this.$http.get('/api/articleList')
 				.then(
 					response => {
-						this.articleList = response.data.reverse()
+						this.articleList = response.data.sort(this.reorder)
 					}
 				).catch(function (error) {
 					console.log(error);
@@ -37,6 +37,11 @@
 		methods: {
 			compiledMarkdown: function (content) {
 				return marked(content || '', {sanitize: true})
+			},
+			reorder: function (article1, article2) {
+				let date1 = new Date(article1.date);
+				let date2 = new Date(article2.date);
+				return date1 > date2 ? -1 : 1;
 			}
 		}
 	}

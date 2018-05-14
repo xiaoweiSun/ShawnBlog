@@ -10,6 +10,12 @@
 			</select>
 		</div>
 
+		<div id="date" class="article_date">日期
+			<input v-model="year" type="text" class="article_date_input">-
+			<input v-model="month" type="text" class="article_date_input">-
+			<input v-model="day" type="text" class="article_date_input">-
+		</div>
+
 		<div class="article_content_label">内容（Markdown）</div>
 		<div id="editor">
 			<textarea v-model="input" @input="update"></textarea>
@@ -28,6 +34,9 @@
 		data: () => ({
 			input: '# hello',
 			title: '',
+			year: '',
+			month: '',
+			day: '',
 			date: '',
 			category: '',
 			category_old: '',
@@ -59,6 +68,9 @@
 						let article = response.data
 						this.title = article.title
 						this.date = article.date
+                        this.year = this.date.split('-')[0];
+                        this.month = this.date.split('-')[1];
+                        this.day = this.date.split('-')[2];
 						this.category = article.category._id
 						this.category_old = this.category
 						this.input = article.content
@@ -97,7 +109,7 @@
 					let articleInformation = {
 						_id: this.$route.params.id,
 						title: this.title,
-						date: this.date,
+						date: this.year + '-' + this.month + '-' + this.day,
 						category: this.category,
 						category_old: this.category_old,
 						content: this.input
@@ -112,7 +124,7 @@
 				} else {
 					let articleInformation = {
 						title: this.title,
-						date: this.getDate(),
+						date: this.year + '-' + this.month + '-' + this.day,
 						category: this.category,
 						content: this.input
 					}
@@ -154,6 +166,12 @@
 			margin-left: 0;
 			line-height: 2;
 		}
+
+        &_date {
+            margin: 10px;
+            margin-left: 0;
+            line-height: 2;
+        }
 
 		&_content_label {
 			margin: 10px 0;

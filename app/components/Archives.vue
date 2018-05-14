@@ -21,7 +21,7 @@
 		mounted: function () {
 			// 获取分类列表
 			this.$http.get('/api/articleList').then(
-				response => this.generateArchives(response.data.reverse())
+				response => this.generateArchives(response.data.sort(this.reorder))
 			).catch(function (error) {
 				console.log(error);
 			})
@@ -50,6 +50,11 @@
 						this.archives.push(archive)
 					}
 				}
+			},
+		  	reorder: function (article1, article2) {
+				let date1 = new Date(article1.date);
+				let date2 = new Date(article2.date);
+				return date1 > date2 ? -1 : 1;
 			}
 		}
 	}
