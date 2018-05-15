@@ -35,5 +35,7 @@
     -moz-border-radius: 3px;
     border-radius: 3px;
   }
-
+  img {
+    max-width: 100%;
+  }
 </style>

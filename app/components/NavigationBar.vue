@@ -25,12 +25,6 @@
 </script>
 
 <style lang="scss">
-	@media (max-width: 767px) {
-		.navigation_inner {
-			width: 100%;
-			margin: 0 20px;
-		}
-	}
 	.navigation {
 		display:flex;
 		height:90px;
@@ -83,6 +77,12 @@
 			&:hover {
 				background: #e1e1e1;
 			}
+		}
+	}
+	@media (max-width: 767px) {
+		.navigation_inner {
+			width: 100%;
+			margin: 0 20px;
 		}
 	}
 </style>
