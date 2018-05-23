@@ -14,21 +14,34 @@
 				<router-link :to="'/articleDetail/'+article._id" class="read_all_btn">阅读全文</router-link>
 			</div>
 		</div>
+		<div class="article_page" v-if="pageNumber > 1">
+			<span v-for="n in pageNumber">
+				<a @click="jumpToPage(n - 1)" class="article_page_link" :class="{current: n - 1 === offset}">{{n}}</a>
+			</span>
+		</div>
 	</div>
 </template>
 
 <script>
 	import marked from 'marked'
+	const LIMIT = 5; // article number to show in each page
 	export default {
 		data: () => ({
 			articleList: [],
+			total: 0,
+			offset: 0
 		}),
+		computed: {
+			pageNumber: function () {
+				return Math.ceil(this.total / LIMIT);
+			}
+		},
 		mounted: function () {
-			// 获取文章列表
-			this.$http.get('/api/articleList')
+			this.$http.get('/api/articleList/0/' + LIMIT)
 				.then(
 					response => {
-						this.articleList = response.data.sort(this.reorder)
+						this.articleList = response.data.docs.sort(this.reorder)
+						this.total = response.data.count
 					}
 				).catch(function (error) {
 					console.log(error);
@@ -42,6 +55,17 @@
 				let date1 = new Date(article1.date);
 				let date2 = new Date(article2.date);
 				return date1 > date2 ? -1 : 1;
+			},
+			jumpToPage: function (offset) {
+				this.$http.get('/api/articleList/' + offset * LIMIT + '/' + LIMIT)
+					.then(
+						response => {
+							this.articleList = response.data.docs.sort(this.reorder)
+							this.offset = offset
+						}
+					).catch(function (error) {
+						console.log(error);
+					})
 			}
 		}
 	}
@@ -83,6 +107,22 @@
 					text-decoration: underline;
 				}
 			}
+		}
+		&_page {
+			margin-top: 120px;
+			border-top:1px solid #eee;
+			&_link {
+				margin: 0 10px;
+				padding: 0 10px;
+				line-height: 30px;
+				display: inline-block;
+				&.current {
+					cursor: text;
+					color: #fff;
+					background: #ccc;
+				}
+			}
+
 		}
 	}
 

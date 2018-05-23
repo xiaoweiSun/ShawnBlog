@@ -51,7 +51,7 @@
 					}
 				}
 			},
-		  	reorder: function (article1, article2) {
+			reorder: function (article1, article2) {
 				let date1 = new Date(article1.date);
 				let date2 = new Date(article2.date);
 				return date1 > date2 ? -1 : 1;

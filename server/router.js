@@ -24,6 +24,24 @@ router.post('/api/signin', function (req, res) {
 	})
 })
 
+router.get('/api/articleList/:offset/:limit', function(req, res) {
+  let offset = Number(req.params.offset)
+  let limit = Number(req.params.limit)
+  db.Article.count({}, (err, count) => {
+  	db.Article.find({})
+  	.populate('category', 'name')
+    .skip(offset)
+    .limit(limit)
+  	.exec(function (err, docs) {
+  		if (err) {
+  			console.error(err)
+  			return
+  		}
+  		res.json({docs, count})
+  	})
+  })
+})
+
 router.get('/api/articleList', function(req, res) {
 	db.Article.find({})
 	.populate('category', 'name')
