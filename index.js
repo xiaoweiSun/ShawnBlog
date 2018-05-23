@@ -2,7 +2,7 @@ const express = require('express')
 const router = require('./server/router')
 const bodyParse = require('body-parser')
 const history = require('connect-history-api-fallback')
-const cors = require('cors')
+// const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 var app = express()
@@ -26,10 +26,10 @@ app.use(session({
 	})
 }))
 
-app.use(cors({
-	origin:'http://127.0.0.1:80',
-	credentials: true
-}));
+// app.use(cors({
+// 	origin:'http://127.0.0.1:80',
+// 	credentials: true
+// }));
 
 var middleware = history({
 	disableDotRule: true,

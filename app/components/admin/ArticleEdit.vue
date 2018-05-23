@@ -68,9 +68,9 @@
 						let article = response.data
 						this.title = article.title
 						this.date = article.date
-                        this.year = this.date.split('-')[0];
-                        this.month = this.date.split('-')[1];
-                        this.day = this.date.split('-')[2];
+						this.year = this.date.split('-')[0];
+						this.month = this.date.split('-')[1];
+						this.day = this.date.split('-')[2];
 						this.category = article.category._id
 						this.category_old = this.category
 						this.input = article.content
