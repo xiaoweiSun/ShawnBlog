@@ -1,5 +1,4 @@
 # ShawnBlog
-[小V的博客](http://www.sunxiaowei.cn)
 ## Environment
 1. Node:7.10.0
 2. Webpack:4.6.0
